@@ -1,0 +1,122 @@
+﻿Software Version,3.10.06,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Experiment File Path:,C:\Users\Public\Documents\Experiments\Grant Kinsler\DNAquantification.xpt,,,,,,,,,,,,,
+Protocol File Path:,C:\Users\Public\Documents\Protocols\Schumer Lab Protocols\DNAquant_SchumerLab.prt,,,,,,,,,,,,,
+Plate Number,Plate 1,,,,,,,,,,,,,
+Date,1/31/22,,,,,,,,,,,,,
+Time,3:17:08 PM,,,,,,,,,,,,,
+Reader Type:,Synergy H1,,,,,,,,,,,,,
+Reader Serial Number:,2001155,,,,,,,,,,,,,
+Reading Type,Reader,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Procedure Details,,,,,,,,,,,,,,
+Plate Type,96 WELL PLATE (Use plate lid),,,,,,,,,,,,,
+Eject plate on completion,,,,,,,,,,,,,,
+Shake,Orbital: 1:00 (MM:SS),,,,,,,,,,,,,
+,Frequency: 205 cpm (5 mm),,,,,,,,,,,,,
+Read,Fluorescence Endpoint,,,,,,,,,,,,,
+,Full Plate,,,,,,,,,,,,,
+,Filter Set 1,,,,,,,,,,,,,
+,"    Excitation: 488,  Emission: 540",,,,,,,,,,,,,
+,"    Optics: Top,  Gain: 100",,,,,,,,,,,,,
+,"Light Source: Xenon Flash,  Lamp Energy: High",,,,,,,,,,,,,
+,"Read Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 10",,,,,,,,,,,,,
+,Read Height: 7 mm,,,,,,,,,,,,,
+Read,Fluorescence Endpoint,,,,,,,,,,,,,
+,Full Plate,,,,,,,,,,,,,
+,Filter Set 1,,,,,,,,,,,,,
+,"    Excitation: 488,  Emission: 540",,,,,,,,,,,,,
+,"    Optics: Top,  Gain: 100",,,,,,,,,,,,,
+,"Light Source: Xenon Flash,  Lamp Energy: High",,,,,,,,,,,,,
+,"Read Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 10",,,,,,,,,,,,,
+,Read Height: 7 mm,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+Layout,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,1,2,3,4,5,6,7,8,9,10,11,12,
+,A,STDB1,SPL1,SPL9,SPL17,SPL25,SPL33,SPL41,SPL49,SPL57,SPL65,SPL73,SPL81,Well ID
+,,100,,,,,,,,,,,,Conc/Dil
+,B,STDB2,SPL2,SPL10,SPL18,SPL26,SPL34,SPL42,SPL50,SPL58,SPL66,SPL74,SPL82,Well ID
+,,50,,,,,,,,,,,,Conc/Dil
+,C,STDB3,SPL3,SPL11,SPL19,SPL27,SPL35,SPL43,SPL51,SPL59,SPL67,SPL75,SPL83,Well ID
+,,25,,,,,,,,,,,,Conc/Dil
+,D,STDB4,SPL4,SPL12,SPL20,SPL28,SPL36,SPL44,SPL52,SPL60,SPL68,SPL76,SPL84,Well ID
+,,15,,,,,,,,,,,,Conc/Dil
+,E,STDB5,SPL5,SPL13,SPL21,SPL29,SPL37,SPL45,SPL53,SPL61,SPL69,SPL77,SPL85,Well ID
+,,10,,,,,,,,,,,,Conc/Dil
+,F,STDB6,SPL6,SPL14,SPL22,SPL30,SPL38,SPL46,SPL54,SPL62,SPL70,SPL78,SPL86,Well ID
+,,5,,,,,,,,,,,,Conc/Dil
+,G,STDB7,SPL7,SPL15,SPL23,SPL31,SPL39,SPL47,SPL55,SPL63,SPL71,SPL79,SPL87,Well ID
+,,2,,,,,,,,,,,,Conc/Dil
+,H,STDB8,SPL8,SPL16,SPL24,SPL32,SPL40,SPL48,SPL56,SPL64,SPL72,SPL80,SPL88,Well ID
+,,0,,,,,,,,,,,,Conc/Dil
+,,,,,,,,,,,,,,
+Results,,,,,,,,,,,,,,
+Actual Temperature:,22.2,,,,,,,,,,,,,
+Actual Temperature:,22.2,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,1,2,3,4,5,6,7,8,9,10,11,12,
+,A,9871,10873,12101,12021,13050,14567,12948,10735,13935,11454,19481,13139,"Read 1:488,540"
+,,8885,11626,11003,11952,12204,13548,13736,12601,12369,14631,18443,13663,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,B,11185,10724,14602,17618,22823,10767,21364,19013,15022,11736,24497,16547,"Read 1:488,540"
+,,12643,10870,13562,12681,17049,10221,15961,14629,15454,7968,17230,15910,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,C,12256,11981,15429,11332,11687,15264,12034,15950,14561,15139,12405,12266,"Read 1:488,540"
+,,11572,10847,15653,11050,13933,13502,11637,14445,15741,13963,11902,15309,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,D,12915,13313,11775,14826,15980,14043,15275,14706,11332,12101,13599,14083,"Read 1:488,540"
+,,14836,13083,12687,16330,14011,13876,14913,15982,13259,12807,14257,15812,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,E,6480,4603,10428,13226,14359,9027,8087,11061,13956,9656,11497,9187,"Read 1:488,540"
+,,6055,4104,10427,12358,14823,8879,8393,10360,14848,9805,12231,9796,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,F,27666,28389,25194,29743,26224,12201,12721,333,1380,1085,553,331,"Read 1:488,540"
+,,27661,30679,30027,34666,28433,19508,7713,342,1979,913,620,355,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,G,26910,27038,26033,29375,28573,16591,7322,4935,2480,913,756,334,"Read 1:488,540"
+,,26454,31312,28934,33866,26394,13581,6702,5894,1590,823,906,315,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,H,20785,19252,13563,7711,4926,1402,22662,19978,10415,8054,2403,1702,"Read 1:488,540"
+,,18904,17764,14871,6809,5050,1241,20468,17819,9132,7966,2758,1888,"Read 2:488,540"
+,,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,[Concentration2]
+,,,,,,,,,,,,,,
+StdCurve2x,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+StdCurve2x Fitting Results,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,Curve Name,Curve Formula,A,B,R2,Fit F Prob,,,,,,,,
+,StdCurve2x,Y=A*X+B,#N/A,#N/A,#N/A,#N/A,,,,,,,,
