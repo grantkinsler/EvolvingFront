@@ -1,0 +1,7 @@
+DiversityCheck/
+*old/
+.DS_Store
+*.docx
+EvolutionTracking/
+GrowthCurves/
+Metagrid/
