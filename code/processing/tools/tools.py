@@ -12,6 +12,13 @@ from itertools import combinations
 import itertools
 import copy
 
+
+ancestral_mutations = {'IRA1_NON':'II:522427:A:T:IRA1:stop_gained:c.4202T>A:p.Leu1401*',
+                      'IRA1_MIS':'II:522697:G:A:IRA1:missense_variant:c.3932C>T:p.Ala1311Val',
+                      'CYR1':'X:427906:C:A:CYR1:missense_variant:c.2750C>A:p.Ser917Tyr',
+                      'GPB2':'I:40104:T:G:GPB2:stop_gained:c.846T>G:p.Tyr282*',
+                      'TOR1':'X:564551:T:G:TOR1:missense_variant:c.5136T>G:p.Phe1712Leu'}
+
 anc_color_map = {'WT':'k',
              'GPB2':'#4daf4a',
              'CYR1':'#e41a1c',
@@ -19,6 +26,14 @@ anc_color_map = {'WT':'k',
              'IRA1_MIS':'#02818a',
              'IRA1_NON':'#1f78b4',
             }
+
+# anc_color_map = {'WT':'k',
+#              'GPB2':'#4daf4a',
+#              'CYR1':'#e41a1c',
+#              'TOR1':'#6a51a3',
+#              'IRA1_MIS':'#02818a',
+#              'IRA1_NON':'#1f78b4',
+#             }
 
 evo_cond_marker_map = {'Evo1D':'o',
               'Evo2D':'^',
@@ -36,13 +51,53 @@ anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#96
              'IRA1_NON':{'Evo1D':'#bdd7e7','Evo2D':'#6baed6','Evo3D':'#2171b5','unknown':'#bdd7e7'}
             }
 
+
+
+color_map = {        
+#              'WT':{'Evo1D':'#cccccc','Evo2D':'#f7f7f7','Evo5D':'#969696','Evo1_5D':'#636363'},
+             'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#969696','Evo1_5D':'#636363'},
+             'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
+             'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
+             'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
+             'IRA1_MIS':{'Evo1D':'#bdc9e1','Evo2D':'#67a9cf','Evo3D':'#02818a','unknown':'#bdc9e1'},
+             'IRA1_NON':{'Evo1D':'#bdd7e7','Evo2D':'#6baed6','Evo3D':'#2171b5','unknown':'#bdd7e7'}
+            }
+
 rebarcoding_source_mutants = {
 'IRA1_MIS':'CGCTAAAGACATAATGTGGTTTGTTG_CTTCCAACAAAAAATCATTTTTATAC', # BCID 43361 from venkataram 2016
 'IRA1_NON':'CGCTAAAGACATAATGTGGTTTGTTG_AGAGTAATCTGCAAGATTCTTTTTCT', # BCID 21967 from venkataram 2016
 'CYR1':    'CGCTAAAGACATAATGTGGTTTGTTG_CTCGAAACAGGAAAAGCACTTATCGA', # BCID 43692 from venkataram 2016
 'TOR1':    'CGCTAAAGACATAATGTGGTTTGTTG_TAGACAAAATGCAATTGTATTGTCAG' , # BCID 21543 from venkataram 2016
-'GPB2':    'CGCTAAAGACATAATGTGGTTTGTTG_TCATGAACGGATAAGCTGGTTGGTTG' , # BCID 7774 from venkataram 2016
-}
+'GPB2':    'CGCTAAAGACATAATGTGGTTTGTTG_TCATGAACGGATAAGCTGGTTGGTTG' } # BCID 7774 from venkataram 2016
+
+
+
+long_colors = list(sns.color_palette())+list(sns.color_palette("Set2"))
+
+# long_colors += ['gray']*(len(all_genes_sorted)-len(long_colors))
+
+# mutation_color_map = {gene:long_colors[g] for g,gene in enumerate(list(all_genes_sorted[:16]))}
+mutation_color_map = {
+    'KSP1':long_colors[4], # purple (b/c TOR pathway)
+    'PUF3':long_colors[1], # orange
+    'PAB1':long_colors[3], # red
+    'RTG2':long_colors[5], 
+    'CIT1':long_colors[11],
+    'ARO80':long_colors[6],
+    'GSH1':long_colors[7],
+    'MKS1':long_colors[13],
+    'SSK2':long_colors[9],
+    'MKT1':long_colors[8],
+    'MIT1':long_colors[10],
+    'GPB2':long_colors[2], # green
+    'KGD1':long_colors[12],
+    'MAE1':long_colors[14],
+    'MDH1':long_colors[14],
+    'IRA1':long_colors[0], # blue (obviously)
+    'IRA2':long_colors[0], # same color as Ira1
+    'double_mutant':'k'
+    }
+
 
 
 
@@ -115,7 +170,6 @@ new_lowcomplexity_by_anc['TOR1'] = new_lowcomplexity_dict['TOR1']
 def flatten(list2d):
     return list(itertools.chain.from_iterable(list2d))
 
-
 def jitter_point(mean,std=0.15):
     return np.random.normal(mean,std)
 
@@ -129,5 +183,9 @@ def inverse_variance_mean(means,standard_devs,axis=1):
     weighted_variance = (np.nansum(1/variances,axis=axis))**(-1)
 
     return weighted_mean, weighted_variance
+
+def standard_error(data):
+
+    return np.std(data)/np.sqrt(len(data))
 
 
