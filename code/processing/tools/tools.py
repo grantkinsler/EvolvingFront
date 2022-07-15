@@ -2,6 +2,7 @@ import numpy as np
 import pandas as p
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.colors import to_hex
 from scipy.stats import pearsonr
 from scipy.spatial import distance
 from scipy.stats.mstats import gmean
@@ -98,6 +99,9 @@ mutation_color_map = {
     'double_mutant':'k'
     }
 
+labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
+lims = {'FerPerHour':[-0.05,0.07],'ResPerHour':[-0.05,0.12],'StaPerHour':[-0.11,0.045]}
+
 
 
 
@@ -187,5 +191,28 @@ def inverse_variance_mean(means,standard_devs,axis=1):
 def standard_error(data):
 
     return np.std(data)/np.sqrt(len(data))
+
+
+def combine_hex_values(color_list):
+
+    color_list = [to_hex(color) for color in color_list] # convert to hex
+  
+    weights = [1/len(color_list) for c in color_list]
+    tot_weight = sum(weights)
+
+    red = int(sum([int(color[1:3], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
+    green = int(sum([int(color[3:5], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
+    blue = int(sum([int(color[5:7], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
+    zpad = lambda x: x if len(x)==2 else '0' + x
+    
+    return '#' + zpad(hex(red)[2:]) + zpad(hex(green)[2:]) + zpad(hex(blue)[2:])
+
+
+def find_mutation_color(gene):
+
+    if gene in mutation_color_map.keys():
+        return mutation_color_map[gene]
+    else:
+        return 'gray'
 
 
