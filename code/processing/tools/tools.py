@@ -100,7 +100,13 @@ mutation_color_map = {
     }
 
 labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
-lims = {'FerPerHour':[-0.05,0.07],'ResPerHour':[-0.05,0.12],'StaPerHour':[-0.11,0.045]}
+lims = {'FerPerHour':[-0.05,0.07],
+        'ResPerHour':[-0.05,0.12],
+        'StaPerHour':[-0.11,0.045],
+        'Fit1D_both2%5%_fitness':[-0.1,1.2],
+        'Fit2D_early_fitness':[-0.1,3.5],
+        'Fit3D_both2%5%_fitness':[-0.5,3.0],
+        'Fit5D_both2%5%_fitness':[-3.5,3.2]}
 
 
 
@@ -191,6 +197,10 @@ def inverse_variance_mean(means,standard_devs,axis=1):
 def standard_error(data):
 
     return np.std(data)/np.sqrt(len(data))
+
+def centroid(arr):
+    
+    return np.mean(arr,axis=0)
 
 
 def combine_hex_values(color_list):
