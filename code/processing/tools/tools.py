@@ -100,9 +100,9 @@ mutation_color_map = {
     }
 
 labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
-lims = {'FerPerHour':[-0.05,0.07],
-        'ResPerHour':[-0.05,0.12],
-        'StaPerHour':[-0.11,0.045],
+lims = {'FerPerHour':[-0.01,0.07],
+        'ResPerHour':[-0.04,0.12],
+        'StaPerHour':[-0.11,0.03],
         'Fit1D_both2%5%_fitness':[-0.1,1.2],
         'Fit2D_early_fitness':[-0.1,3.5],
         'Fit3D_both2%5%_fitness':[-0.5,3.0],
@@ -183,9 +183,9 @@ def flatten(list2d):
 def jitter_point(mean,std=0.15):
     return np.random.normal(mean,std)
 
-def inverse_variance_mean(means,standard_devs,axis=1):
+def inverse_variance_mean(means,variances,axis=1):
 
-    variances = standard_devs**2
+    # variances = standard_devs**2
     # variances = standard_devs
 
     weighted_mean = np.nansum(means/variances,axis=axis)/(np.nansum(1/variances,axis=axis))
