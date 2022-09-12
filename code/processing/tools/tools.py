@@ -76,8 +76,8 @@ rebarcoding_source_mutants = {
 long_colors = list(sns.color_palette())+list(sns.color_palette("Set2"))
 
 gene_pathway_map = {
+    'TOR/Sch9':['KSP1','TOR1'],
     'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5'],
-    'TOR/Sch9':['TOR1','KSP1'],
     'HOG':['HOG1','PBS2','SSK2'],
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
@@ -92,14 +92,14 @@ mutation_color_map = {
     'KSP1':long_colors[4], # purple (b/c TOR pathway)
     'PUF3':long_colors[1], # orange
     'PAB1':long_colors[3], # red
-    'RTG2':long_colors[5], 
-    'CIT1':long_colors[11],
-    'ARO80':long_colors[6],
-    'GSH1':long_colors[7],
-    'MKS1':long_colors[13],
-    'SSK2':long_colors[9],
-    'MKT1':long_colors[8],
-    'MIT1':long_colors[10],
+    'RTG2':long_colors[5], # brown
+    'CIT1':long_colors[11], # pinky orange
+    'ARO80':long_colors[6], # pink
+    'GSH1':long_colors[7], # absolute gray
+    'MKS1':long_colors[13], # light pink
+    'SSK2':long_colors[9], # teal
+    'MKT1':long_colors[8], # greenish yellow
+    'MIT1':long_colors[10], 
     'GPB2':long_colors[2], # green
     'KGD1':long_colors[12],
     'MAE1':long_colors[14],
@@ -109,14 +109,37 @@ mutation_color_map = {
     'double_mutant':'k'
     }
 
+mutation_color_map = {
+    'KSP1':long_colors[4], # purple (b/c TOR pathway)
+    'PUF3':long_colors[1], # orange
+    'PAB1':long_colors[3], # red
+    'RTG2':long_colors[5], # brown
+    'CIT1':long_colors[11], # pinky orange
+    'ARO80':long_colors[6], # pink
+    'GSH1':long_colors[7], # absolute gray
+    'MKS1':long_colors[13], # light pink
+    'SSK2':long_colors[9], # teal
+    'MKT1':long_colors[8], # greenish yellow
+    'MIT1':long_colors[10], 
+    'GPB2':long_colors[2], # green
+    'KGD1':long_colors[12],
+    'MAE1':long_colors[14],
+    'MDH1':long_colors[14],
+    'IRA1':long_colors[0], # blue (obviously)
+    'IRA2':long_colors[0], # same color as Ira1
+    'double_mutant':'k'
+    }
+
+    
+
 labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
-lims = {'FerPerHour':[-0.01,0.07],
+lims = {'FerPerHour':[-0.01,0.08],
         'ResPerHour':[-0.04,0.12],
-        'StaPerHour':[-0.11,0.03],
-        'Fit1D_both2%5%_fitness':[-0.1,1.2],
-        'Fit2D_early_fitness':[-0.1,3.5],
-        'Fit3D_both2%5%_fitness':[-0.5,3.0],
-        'Fit5D_both2%5%_fitness':[-3.5,3.2]}
+        'StaPerHour':[-0.11,0.02],
+        'Fit1D_both2%5%_fitness':[-0.05,1.4],
+        'Fit2D_early_fitness':[-0.3,3.5],
+        'Fit3D_both2%5%_fitness':[-1.0,3.1],
+        'Fit5D_both2%5%_fitness':[-4.2,3.2]}
 
 
 
@@ -234,5 +257,9 @@ def find_mutation_color(gene):
         return mutation_color_map[gene]
     else:
         return 'gray'
+
+def hamming_distance(s1,s2):
+    assert len(s1) == len(s2)
+    return sum(ch1 != ch2 for ch1, ch2 in zip(s1,s2))
 
 
