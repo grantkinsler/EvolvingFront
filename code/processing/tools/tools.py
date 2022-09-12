@@ -75,6 +75,16 @@ rebarcoding_source_mutants = {
 
 long_colors = list(sns.color_palette())+list(sns.color_palette("Set2"))
 
+gene_pathway_map = {
+    'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5'],
+    'TOR/Sch9':['TOR1','KSP1'],
+    'HOG':['HOG1','PBS2','SSK2'],
+    'RTG':['RTG2','MKS1','BMH1','BMH2'],
+    'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
+    'Deadenylation':['PUF3','PAB1','PAN2','PAN3']
+    
+}
+
 # long_colors += ['gray']*(len(all_genes_sorted)-len(long_colors))
 
 # mutation_color_map = {gene:long_colors[g] for g,gene in enumerate(list(all_genes_sorted[:16]))}
