@@ -44,6 +44,8 @@ evo_cond_marker_map = {'Evo1D':'o',
               'unknown':'x',
              }
 
+ploidy_marker_map = {'haploid':'o','diploid':'^'}
+
 anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#969696','Evo1_5D':'#636363'},
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
@@ -75,15 +77,12 @@ rebarcoding_source_mutants = {
 
 long_colors = list(sns.color_palette())+list(sns.color_palette("Set2"))
 
-gene_pathway_map = {
-    'TOR/Sch9':['KSP1','TOR1'],
+gene_pathway_map = {'TOR/Sch9':['KSP1','TOR1'],
     'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5'],
     'HOG':['HOG1','PBS2','SSK2'],
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
-    'Deadenylation':['PUF3','PAB1','PAN2','PAN3']
-    
-}
+    'Deadenylation':['PUF3','PAB1','PAN2','PAN3']}
 
 # long_colors += ['gray']*(len(all_genes_sorted)-len(long_colors))
 
@@ -101,36 +100,55 @@ mutation_color_map = {
     'MKT1':long_colors[8], # greenish yellow
     'MIT1':long_colors[10], 
     'GPB2':long_colors[2], # green
-    'KGD1':long_colors[12],
-    'MAE1':long_colors[14],
-    'MDH1':long_colors[14],
+    'KGD1':long_colors[12], 
+    'MAE1':long_colors[14], # light green
+    'MDH1':long_colors[14], # light green
     'IRA1':long_colors[0], # blue (obviously)
     'IRA2':long_colors[0], # same color as Ira1
     'double_mutant':'k'
     }
+
 
 mutation_color_map = {
     'KSP1':long_colors[4], # purple (b/c TOR pathway)
     'PUF3':long_colors[1], # orange
     'PAB1':long_colors[3], # red
-    'RTG2':long_colors[5], # brown
-    'CIT1':long_colors[11], # pinky orange
+    
+    # browns 
+    'RTG2':'#8c510a', # dark brown
+    'MKS1':'#bf812d', # medium brown 
+    
+    ### TCA cycle mutants green
+    'CIT1':'#006d2c', # darkest
+    'KGD1':'#31a354',
+    'MAE1':'#74c476',
+    'MDH1':'#bae4b3', # lightest
+
+
     'ARO80':long_colors[6], # pink
     'GSH1':long_colors[7], # absolute gray
-    'MKS1':long_colors[13], # light pink
+
     'SSK2':long_colors[9], # teal
     'MKT1':long_colors[8], # greenish yellow
     'MIT1':long_colors[10], 
     'GPB2':long_colors[2], # green
-    'KGD1':long_colors[12],
-    'MAE1':long_colors[14],
-    'MDH1':long_colors[14],
+
+
     'IRA1':long_colors[0], # blue (obviously)
     'IRA2':long_colors[0], # same color as Ira1
     'double_mutant':'k'
     }
 
+gene_pathway_map = {
+    'TOR/Sch9':['KSP1','TOR1'], 
+    'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5'], # blues?
+    'HOG':['HOG1','PBS2','SSK2'],
+    'RTG':['RTG2','MKS1','BMH1','BMH2'],
+    'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'], # reds
+    'Deadenylation':['PUF3','PAB1','PAN2','PAN3']} # oranges
     
+
+
 
 labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
 lims = {'FerPerHour':[-0.01,0.08],
@@ -261,5 +279,10 @@ def find_mutation_color(gene):
 def hamming_distance(s1,s2):
     assert len(s1) == len(s2)
     return sum(ch1 != ch2 for ch1, ch2 in zip(s1,s2))
+
+
+def big_extreme(arr):
+
+    return np.abs(arr).max()
 
 
