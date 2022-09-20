@@ -87,26 +87,26 @@ gene_pathway_map = {'TOR/Sch9':['KSP1','TOR1'],
 # long_colors += ['gray']*(len(all_genes_sorted)-len(long_colors))
 
 # mutation_color_map = {gene:long_colors[g] for g,gene in enumerate(list(all_genes_sorted[:16]))}
-mutation_color_map = {
-    'KSP1':long_colors[4], # purple (b/c TOR pathway)
-    'PUF3':long_colors[1], # orange
-    'PAB1':long_colors[3], # red
-    'RTG2':long_colors[5], # brown
-    'CIT1':long_colors[11], # pinky orange
-    'ARO80':long_colors[6], # pink
-    'GSH1':long_colors[7], # absolute gray
-    'MKS1':long_colors[13], # light pink
-    'SSK2':long_colors[9], # teal
-    'MKT1':long_colors[8], # greenish yellow
-    'MIT1':long_colors[10], 
-    'GPB2':long_colors[2], # green
-    'KGD1':long_colors[12], 
-    'MAE1':long_colors[14], # light green
-    'MDH1':long_colors[14], # light green
-    'IRA1':long_colors[0], # blue (obviously)
-    'IRA2':long_colors[0], # same color as Ira1
-    'double_mutant':'k'
-    }
+# mutation_color_map = {
+#     'KSP1':long_colors[4], # purple (b/c TOR pathway)
+#     'PUF3':long_colors[1], # orange
+#     'PAB1':long_colors[3], # red
+#     'RTG2':long_colors[5], # brown
+#     'CIT1':long_colors[11], # pinky orange
+#     'ARO80':long_colors[6], # pink
+#     'GSH1':long_colors[7], # absolute gray
+#     'MKS1':long_colors[13], # light pink
+#     'SSK2':long_colors[9], # teal
+#     'MKT1':long_colors[8], # greenish yellow
+#     'MIT1':long_colors[10], 
+#     'GPB2':long_colors[2], # green
+#     'KGD1':long_colors[12], 
+#     'MAE1':long_colors[14], # light green
+#     'MDH1':long_colors[14], # light green
+#     'IRA1':long_colors[0], # blue (obviously)
+#     'IRA2':long_colors[0], # same color as Ira1
+#     'double_mutant':'k'
+#     }
 
 
 mutation_color_map = {
