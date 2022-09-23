@@ -1,0 +1,11 @@
+genotype	BC1	ID
+cyr1	gacagaaaagccaaatggatttaccg	C1
+cyr1	cagaaaagccataacgctatttgaaa	C2
+cyr1	agaacaaaaactaaactcattcatgg	C3
+cyr1	acttaaaaagcaaacatgattattca	C4
+cyr1	ctagaaatctcaaaaacttttggctg	C5
+gpb2	ccaacaaaaggaaacgtatttattga	G6
+gpb2	ccgccaatcccgaaccccgtttcgcc	G7
+gpb2	gtattaaaattaaaaataattgcaca	G8
+tor1	atcagaagttcgaatcaaattacgaa	T9
+tor1	ttaaaaatacaaaaaaagatttaagg	T10
