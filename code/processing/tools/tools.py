@@ -234,16 +234,17 @@ def flatten(list2d):
 def jitter_point(mean,std=0.15):
     return np.random.normal(mean,std)
 
-def inverse_variance_mean(means,variances,axis=1):
+# def inverse_variance_mean(means,variances,axis=1):
+def inverse_variance_mean(means,standard_devs,axis=1):
 
-    # variances = standard_devs**2
+    variances = np.square(standard_devs)
     # variances = standard_devs
 
     weighted_mean = np.nansum(means/variances,axis=axis)/(np.nansum(1/variances,axis=axis))
 
-    weighted_variance = (np.nansum(1/variances,axis=axis))**(-1)
+    weighted_standard_devs = np.sqrt((np.nansum(1/variances,axis=axis))**(-1))
 
-    return weighted_mean, weighted_variance
+    return weighted_mean, weighted_standard_devs
 
 def standard_error(data):
 
