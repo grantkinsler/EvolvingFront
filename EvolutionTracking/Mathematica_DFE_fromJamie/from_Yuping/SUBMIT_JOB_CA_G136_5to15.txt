@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --account=dpetrov
+#SBATCH --job-name=CA_G136_5to15
+#SBATCH --output=output.%j.out
+#SBATCH --error=output.%j.err
+#SBATCH --time=4-00:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=96G # 64G is enough for most jobs but can be increased to 100G.
+#SBATCH --mail-type=END,FAIL 
+#SBATCH --mail-user=yupingl@stanford.edu
+
+
+module load Mathematica
+
+math -script /labs/dpetrov/yupingli/DA_Mathematica/CA/CA_prep_infer_G136_5to15.m
