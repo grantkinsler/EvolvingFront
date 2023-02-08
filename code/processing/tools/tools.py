@@ -26,6 +26,7 @@ anc_color_map = {'WT':'k',
              'TOR1':'#6a51a3',
              'IRA1_MIS':'#02818a',
              'IRA1_NON':'#1f78b4',
+             'all_second':'orange',
             }
 
 # anc_color_map = {'WT':'k',
