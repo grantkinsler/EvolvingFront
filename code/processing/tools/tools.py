@@ -78,8 +78,9 @@ rebarcoding_source_mutants = {
 
 long_colors = list(sns.color_palette())+list(sns.color_palette("Set2"))
 
-gene_pathway_map = {'TOR/Sch9':['KSP1','TOR1'],
+gene_pathway_map = {
     'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5'],
+    'TOR/Sch9':['TOR1','SCH9','KSP1'],
     'HOG':['HOG1','PBS2','SSK2'],
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
@@ -140,14 +141,6 @@ mutation_color_map = {
     'double_mutant':'k'
     }
 
-gene_pathway_map = {
-    'TOR/Sch9':['KSP1','TOR1'], 
-    'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5'], # blues?
-    'HOG':['HOG1','PBS2','SSK2'],
-    'RTG':['RTG2','MKS1','BMH1','BMH2'],
-    'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'], # reds
-    'Deadenylation':['PUF3','PAB1','PAN2','PAN3']} # oranges
-    
 
 
 
