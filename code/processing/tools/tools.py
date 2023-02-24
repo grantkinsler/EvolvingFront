@@ -125,6 +125,7 @@ mutation_color_map = {
     'KGD1':'#31a354',
     'MAE1':'#74c476',
     'MDH1':'#bae4b3', # lightest
+    'MDH2':'#bae4b3', # lightest
 
 
     'ARO80':long_colors[6], # pink
@@ -134,6 +135,9 @@ mutation_color_map = {
     'MKT1':long_colors[8], # greenish yellow
     'MIT1':long_colors[10], 
     'GPB2':long_colors[2], # green
+
+    'PAN2':'#a50f15',
+    'PAN3':'#a50f15',
 
 
     'IRA1':long_colors[0], # blue (obviously)
