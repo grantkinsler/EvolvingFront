@@ -51,21 +51,20 @@ anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#96
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
-             'IRA1_MIS':{'Evo1D':'#bdc9e1','Evo2D':'#67a9cf','Evo3D':'#02818a','unknown':'#bdc9e1'},
+             'IRA1_MIS':{'Evo1D':'#bdc9e1','Evo2D':'#bdc9e1','Evo3D':'#02818a','unknown':'#bdc9e1'},
              'IRA1_NON':{'Evo1D':'#bdd7e7','Evo2D':'#6baed6','Evo3D':'#2171b5','unknown':'#bdd7e7'}
             }
 
 
-
-color_map = {        
-#              'WT':{'Evo1D':'#cccccc','Evo2D':'#f7f7f7','Evo5D':'#969696','Evo1_5D':'#636363'},
-             'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#969696','Evo1_5D':'#636363'},
-             'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
-             'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
-             'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
-             'IRA1_MIS':{'Evo1D':'#bdc9e1','Evo2D':'#67a9cf','Evo3D':'#02818a','unknown':'#bdc9e1'},
-             'IRA1_NON':{'Evo1D':'#bdd7e7','Evo2D':'#6baed6','Evo3D':'#2171b5','unknown':'#bdd7e7'}
-            }
+# color_map = {        
+# #              'WT':{'Evo1D':'#cccccc','Evo2D':'#f7f7f7','Evo5D':'#969696','Evo1_5D':'#636363'},
+#              'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#969696','Evo1_5D':'#636363'},
+#              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
+#              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
+#              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
+#              'IRA1_MIS':{'Evo1D':'#bdc9e1','Evo2D':'#67a9cf','Evo3D':'#02818a','unknown':'#bdc9e1'},
+#              'IRA1_NON':{'Evo1D':'#bdd7e7','Evo2D':'#6baed6','Evo3D':'#2171b5','unknown':'#bdd7e7'}
+#             }
 
 rebarcoding_source_mutants = {
 'IRA1_MIS':'CGCTAAAGACATAATGTGGTTTGTTG_CTTCCAACAAAAAATCATTTTTATAC', # BCID 43361 from venkataram 2016
@@ -79,8 +78,8 @@ rebarcoding_source_mutants = {
 long_colors = list(sns.color_palette())+list(sns.color_palette("Set2"))
 
 gene_pathway_map = {
-    'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5'],
-    'TOR/Sch9':['TOR1','SCH9','KSP1'],
+    'Ras/PKA':['IRA1','IRA2','GPB1','GPB2','PDE2','CYR1','GPR1','SHR5','RAS2','TFS1'],
+    'TOR/Sch9':['TOR1','KOG1','SCH9','KSP1'],
     'HOG':['HOG1','PBS2','SSK2'],
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
@@ -124,12 +123,14 @@ mutation_color_map = {
     'SHR5':'#9ecae1',
     'TFS1':'#9ecae1',
     'YAK1':'#9ecae1',
+    'RAS2':'#9ecae1',
 
     ## TOR/Sch9 mutants
     ## Purples
     'TOR1':'#bcbddc',
     'SCH9':'#807dba',
-    'KSP1':'#54278f', # purple (b/c TOR pathway)
+    'KOG1':'#807dba',
+    'KSP1':'#54278f',
 
     ## HOG mutants
     ## Teals
@@ -154,6 +155,7 @@ mutation_color_map = {
     'MAE1':'#74c476',
     'MDH1':'#bae4b3', # lightest
     'MDH2':'#bae4b3', # lightest
+    'ALD5':'#bae4b3', # lightest
 
     ## Mitochondrial biogenesis
     ## Oranges/Reds
@@ -168,6 +170,7 @@ mutation_color_map = {
     'GSH1':'gold', # gold
     'MKT1':long_colors[8], # greenish yellow
     'MIT1':long_colors[10], 
+    'MTH1':'steelblue',
     
     'double_mutant':'k'
     }
