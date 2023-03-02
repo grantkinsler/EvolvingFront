@@ -168,19 +168,19 @@
 166,IRA1_MIS,MKS1,8,"['XIV:483780:TA:T:MKS1:frameshift_variant:c.232delA:p.Arg78fs:0/1', 'XIV:484747:GT:G:MKS1:frameshift_variant:c.1195delT:p.Ser399fs:0/1', 'XIV:484486:G:T:MKS1:stop_gained:c.931G>T:p.Glu311*:0/1', 'XIV:484471:G:T:MKS1:stop_gained:c.916G>T:p.Glu306*:0/1', 'XIV:484140:TATCACTGGTTTTGATACA:T:MKS1:disruptive_inframe_deletion:c.587_604delTCACTGGTTTTGATACAA:p.Ile196_Thr201del:1/1', 'XIV:483722:A:G:MKS1:missense_variant:c.167A>G:p.Asn56Ser:1/1', 'XIV:483616:C:T:MKS1:missense_variant:c.61C>T:p.Pro21Ser:1/1', 'XIV:484664:T:C:MKS1:missense_variant:c.1109T>C:p.Leu370Ser:1/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
 167,IRA1_MIS,ISM1,1,['XVI:476727:G:T:ISM1:missense_variant:c.2275C>A:p.Gln759Lys:0/1'],['EvolvingFront_WGS_Plate5_H11']
 168,IRA1_MIS,EPS1,1,['IX:346886:T:G:EPS1:missense_variant:c.1195T>G:p.Phe399Val:0/1'],['EvolvingFront_WGS_Plate5_H11']
-169,IRA1_MIS,NTG1,2,"['I:127658:C:A:NTG1:missense_variant:c.445G>T:p.Gly149Trp:0/1', 'I:127067:C:A:NTG1:stop_gained:c.1036G>T:p.Glu346*:0/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
-170,IRA1_MIS,TFA1,2,"['XI:387148:GTGA:G:TFA1:disruptive_inframe_deletion:c.1419_1421delTGA:p.Asp473del:0/1', 'XI:387148:GTGA:GTGATGA:TFA1:disruptive_inframe_insertion:c.1419_1421dupTGA:p.Asp473dup:0/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
-171,IRA1_MIS,PUT2,1,['VIII:182216:G:A:PUT2:synonymous_variant:c.240G>A:p.Pro80Pro:1/1'],['EvolvingFront_WGS_Plate5_H11']
-172,IRA1_MIS,COY1,1,['XI:111607:C:A:COY1:missense_variant:c.897G>T:p.Gln299His:1/1'],['EvolvingFront_WGS_Plate5_H11']
-173,IRA1_MIS,BSC4,1,['XIV:137755:G:C:BSC4:missense_variant:c.57G>C:p.Lys19Asn:1/1'],['EvolvingFront_WGS_Plate5_H11']
-174,IRA1_MIS,KGD1,3,"['IX:123785:C:T:KGD1:missense_variant:c.1097C>T:p.Ala366Val:0/1', 'IX:124444:T:G:KGD1:missense_variant:c.1756T>G:p.Phe586Val:1/1', 'IX:123069:G:T:KGD1:missense_variant:c.381G>T:p.Leu127Phe:1/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
-175,IRA1_MIS,DSN1,1,['IX:375791:G:GATGCGACTGCAA:DSN1:disruptive_inframe_insertion:c.396_407dupAAATGCGACTGC:p.Ala136_Asn137insAsnAlaThrAla:0/1'],['EvolvingFront_WGS_Plate5_H11']
-176,IRA1_MIS,TDH2,1,['X:454031:C:A:TDH2:missense_variant:c.651G>T:p.Lys217Asn:0/1'],['EvolvingFront_WGS_Plate5_H11']
-177,IRA1_MIS,HOC1,1,['X:574789:C:A:HOC1:missense_variant:c.809C>A:p.Ala270Glu:0/1'],['EvolvingFront_WGS_Plate5_H11']
-178,IRA1_MIS,ILM1,1,['X:647506:T:C:ILM1:upstream_gene_variant:c.-3405A>G:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
-179,IRA1_MIS,KRI1,1,['XIV:58869:C:G:KRI1:upstream_gene_variant:c.-2972G>C:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
-180,IRA1_MIS,SFM1,1,['XV:372916:G:T:SFM1:missense_variant:c.524C>A:p.Ala175Asp:0/1'],['EvolvingFront_WGS_Plate5_H11']
-181,IRA1_MIS,CIT1,14,"['XIV:630227:C:A:CIT1:missense_variant:c.835G>T:p.Gly279Cys:1/1', 'XIV:630808:C:T:CIT1:missense_variant:c.254G>A:p.Arg85Lys:1/1', 'XIV:629939:CGA:C:CIT1:frameshift_variant:c.1121_1122delTC:p.Phe374fs:1|1', 'XIV:629984:C:G:CIT1:missense_variant:c.1078G>C:p.Val360Leu:1/1', 'XIV:630809:T:C:CIT1:missense_variant:c.253A>G:p.Arg85Gly:1/1', 'XIV:629738:C:T:CIT1:missense_variant:c.1324G>A:p.Gly442Ser:1/1', 'XIV:630198:T:G:CIT1:missense_variant:c.864A>C:p.Leu288Phe:1/1', 'XIV:629822:A:G:CIT1:missense_variant:c.1240T>C:p.Ser414Pro:1/1', 'XIV:630137:C:T:CIT1:missense_variant:c.925G>A:p.Gly309Ser:1/1', 'XIV:631351:C:T:CIT1:upstream_gene_variant:c.-290G>A:nan:1/1', 'XIV:629987:C:T:CIT1:missense_variant:c.1075G>A:p.Ala359Thr:1/1', 'XIV:630215:C:T:CIT1:missense_variant:c.847G>A:p.Ala283Thr:1/1', 'XIV:629755:C:A:CIT1:missense_variant:c.1307G>T:p.Gly436Val:1/1', 'XIV:630424:T:C:CIT1:missense_variant:c.638A>G:p.Asp213Gly:1/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+169,IRA1_MIS,CIT1,16,"['XIV:631356:ACACAAAAGTATTTTTGGTCTAGCGGGGGTCATACTTTTCATTTCCGGGCGGCTGCGGCGGAAAAAAACGTGACGCCTTTTAG:A:CIT1:upstream_gene_variant:c.-377_-296delCTAAAAGGCGTCACGTTTTTTTCCGCCGCAGCCGCCCGGAAATGAAAAGTATGACCCCCGCTAGACCAAAAATACTTTTGTG:nan:0/1', 'XIV:630227:C:A:CIT1:missense_variant:c.835G>T:p.Gly279Cys:1/1', 'XIV:631356:ACACAAAAGTATTTTTGGTCTAGCGGGGGTCATACTTTTCATTTCCGGGCGGCTGCGGCGGAAAAAAACGTGACGCCTTTTAG:A:CIT1:upstream_gene_variant:c.-377_-296delCTAAAAGGCGTCACGTTTTTTTCCGCCGCAGCCGCCCGGAAATGAAAAGTATGACCCCCGCTAGACCAAAAATACTTTTGTG:nan:0|1', 'XIV:630808:C:T:CIT1:missense_variant:c.254G>A:p.Arg85Lys:1/1', 'XIV:629939:CGA:C:CIT1:frameshift_variant:c.1121_1122delTC:p.Phe374fs:1|1', 'XIV:629984:C:G:CIT1:missense_variant:c.1078G>C:p.Val360Leu:1/1', 'XIV:630809:T:C:CIT1:missense_variant:c.253A>G:p.Arg85Gly:1/1', 'XIV:629738:C:T:CIT1:missense_variant:c.1324G>A:p.Gly442Ser:1/1', 'XIV:630198:T:G:CIT1:missense_variant:c.864A>C:p.Leu288Phe:1/1', 'XIV:629822:A:G:CIT1:missense_variant:c.1240T>C:p.Ser414Pro:1/1', 'XIV:630137:C:T:CIT1:missense_variant:c.925G>A:p.Gly309Ser:1/1', 'XIV:631351:C:T:CIT1:upstream_gene_variant:c.-290G>A:nan:1/1', 'XIV:629987:C:T:CIT1:missense_variant:c.1075G>A:p.Ala359Thr:1/1', 'XIV:630215:C:T:CIT1:missense_variant:c.847G>A:p.Ala283Thr:1/1', 'XIV:629755:C:A:CIT1:missense_variant:c.1307G>T:p.Gly436Val:1/1', 'XIV:630424:T:C:CIT1:missense_variant:c.638A>G:p.Asp213Gly:1/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+170,IRA1_MIS,NTG1,2,"['I:127658:C:A:NTG1:missense_variant:c.445G>T:p.Gly149Trp:0/1', 'I:127067:C:A:NTG1:stop_gained:c.1036G>T:p.Glu346*:0/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+171,IRA1_MIS,TFA1,2,"['XI:387148:GTGA:G:TFA1:disruptive_inframe_deletion:c.1419_1421delTGA:p.Asp473del:0/1', 'XI:387148:GTGA:GTGATGA:TFA1:disruptive_inframe_insertion:c.1419_1421dupTGA:p.Asp473dup:0/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+172,IRA1_MIS,PUT2,1,['VIII:182216:G:A:PUT2:synonymous_variant:c.240G>A:p.Pro80Pro:1/1'],['EvolvingFront_WGS_Plate5_H11']
+173,IRA1_MIS,COY1,1,['XI:111607:C:A:COY1:missense_variant:c.897G>T:p.Gln299His:1/1'],['EvolvingFront_WGS_Plate5_H11']
+174,IRA1_MIS,BSC4,1,['XIV:137755:G:C:BSC4:missense_variant:c.57G>C:p.Lys19Asn:1/1'],['EvolvingFront_WGS_Plate5_H11']
+175,IRA1_MIS,KGD1,3,"['IX:123785:C:T:KGD1:missense_variant:c.1097C>T:p.Ala366Val:0/1', 'IX:124444:T:G:KGD1:missense_variant:c.1756T>G:p.Phe586Val:1/1', 'IX:123069:G:T:KGD1:missense_variant:c.381G>T:p.Leu127Phe:1/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+176,IRA1_MIS,DSN1,1,['IX:375791:G:GATGCGACTGCAA:DSN1:disruptive_inframe_insertion:c.396_407dupAAATGCGACTGC:p.Ala136_Asn137insAsnAlaThrAla:0/1'],['EvolvingFront_WGS_Plate5_H11']
+177,IRA1_MIS,TDH2,1,['X:454031:C:A:TDH2:missense_variant:c.651G>T:p.Lys217Asn:0/1'],['EvolvingFront_WGS_Plate5_H11']
+178,IRA1_MIS,HOC1,1,['X:574789:C:A:HOC1:missense_variant:c.809C>A:p.Ala270Glu:0/1'],['EvolvingFront_WGS_Plate5_H11']
+179,IRA1_MIS,ILM1,1,['X:647506:T:C:ILM1:upstream_gene_variant:c.-3405A>G:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
+180,IRA1_MIS,KRI1,1,['XIV:58869:C:G:KRI1:upstream_gene_variant:c.-2972G>C:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
+181,IRA1_MIS,SFM1,1,['XV:372916:G:T:SFM1:missense_variant:c.524C>A:p.Ala175Asp:0/1'],['EvolvingFront_WGS_Plate5_H11']
 182,IRA1_MIS,TOR1,1,['X:561336:A:T:TOR1:missense_variant:c.1921A>T:p.Ile641Phe:1/1'],['EvolvingFront_WGS_Plate5_H11']
 183,IRA1_MIS,FAS2,1,['XVI:113739:G:T:FAS2:missense_variant:c.5088G>T:p.Lys1696Asn:1/1'],['EvolvingFront_WGS_Plate5_H11']
 184,IRA1_MIS,YHR028W-A,1,['VIII:167568:T:G:YHR028W-A:missense_variant:c.217T>G:p.Ser73Ala:1|1'],['EvolvingFront_WGS_Plate5_H11']
@@ -464,25 +464,25 @@
 462,GPB2,LAS21,1,['X:318922:T:G:LAS21:NON_SYNONYMOUS_CODING:Ttt/Gtt:F547V:1'],['EvolvingFront_WGS_Plate5_H11']
 463,GPB2,PUF3,1,['XII:124144:T:A:PUF3:stop_gained:c.571A>T:p.Arg191*:1/1'],['EvolvingFront_WGS_Plate5_H11']
 464,TOR1,YGR250C,1,['VII:993129:C:A:YGR250C:NON_SYNONYMOUS_CODING:gaG/gaT:E131D:0/1'],['EvolvingFront_WGS_Plate5_H11']
-465,TOR1,SIR1,1,['XI:642124:A:T:SIR1:NON_SYNONYMOUS_CODING:Acc/Tcc:T529S:0/1'],['EvolvingFront_WGS_Plate5_H11']
-466,TOR1,SSK2,7,"['XIV:682328:A:AT:SSK2:FRAME_SHIFT:aaa/aaaA:K1035K?:1/1', 'XIV:681087:AT:A:SSK2:FRAME_SHIFT:aat/:N1449:1/1', 'XIV:681335:T:TGACCATTTCATCTTCAATAC:SSK2:FRAME_SHIFT:gtc/gtcGTATTGAAGATGAAATGGTC:V1366VVLKMKW?:1', 'XIV:683670:TA:T:SSK2:FRAME_SHIFT:ata/:I588:1/1', 'XIV:684683:G:GT:SSK2:FRAME_SHIFT:aaa/aaaA:K250K?:1', 'XIV:683670:TA:T:SSK2:FRAME_SHIFT:ata/:I588:1', 'XIV:681317:G:A:SSK2:STOP_GAINED:Caa/Taa:Q1373*:1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
-467,TOR1,YER187W,1,['V:566039:C:A:YER187W:UPSTREAM:191:nan:1/1'],['EvolvingFront_WGS_Plate5_H11']
-468,TOR1,UFD2,1,['IV:121376:T:C:UFD2:NON_SYNONYMOUS_CODING:Atc/Gtc:I73V:0/1'],['EvolvingFront_WGS_Plate5_H11']
-469,TOR1,STE20,1,['VIII:94974:T:G:STE20:DOWNSTREAM:144:nan:1/1'],['EvolvingFront_WGS_Plate5_H11']
-470,TOR1,POL2,1,['XIV:151373:A:T:POL2:NON_SYNONYMOUS_CODING:aaA/aaT:K1054N:0/1'],['EvolvingFront_WGS_Plate5_H11']
-471,TOR1,SIR4,1,['IV:919195:C:G:SIR4:stop_gained:c.1625C>G:p.Ser542*:1/1'],['EvolvingFront_WGS_Plate5_H11']
-472,TOR1,DNF3,1,['XIII:579919:A:G:DNF3:missense_variant:c.4003T>C:p.Cys1335Arg:1/1'],['EvolvingFront_WGS_Plate5_H11']
-473,TOR1,YNL017C,1,['XIV:602397:C:A:YNL017C:NON_SYNONYMOUS_CODING:tGt/tTt:C27F:1'],['EvolvingFront_WGS_Plate5_H11']
-474,TOR1,YRO2,1,['II:343133:T:A:YRO2:synonymous_variant:c.33T>A:p.Gly11Gly:0/1'],['EvolvingFront_WGS_Plate5_H11']
-475,TOR1,SMA2,1,['XIII:146102:C:T:SMA2:upstream_gene_variant:c.-4569G>A:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
-476,TOR1,BUD14,1,['I:166341:AT:A:BUD14:DOWNSTREAM:400:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
-477,TOR1,PAN3,1,['XI:391578:A:T:PAN3:STOP_GAINED:taT/taA:Y234*:1/1'],['EvolvingFront_WGS_Plate5_H11']
-478,TOR1,RIX7,1,['XII:72255:C:T:RIX7:NON_SYNONYMOUS_CODING:Gca/Aca:A298T:0/1'],['EvolvingFront_WGS_Plate5_H11']
-479,TOR1,IRA2,3,"['XV:173652:T:G:IRA2:stop_gained:c.2583T>G:p.Tyr861*:0/1', 'XV:174089:C:A:IRA2:stop_gained:c.3020C>A:p.Ser1007*:0/1', 'XV:179321:T:A:IRA2:NON_SYNONYMOUS_CODING:aTt/aAt:I2751N:0/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
-480,TOR1,UBC8,1,['V:132034:G:C:UBC8:missense_variant:c.140G>C:p.Gly47Ala:0/1'],['EvolvingFront_WGS_Plate5_H11']
-481,TOR1,PAB1,1,['V:510718:C:G:PAB1:NON_SYNONYMOUS_CODING:Cgt/Ggt:R116G:1/1'],['EvolvingFront_WGS_Plate5_H11']
-482,TOR1,ECM12,1,['VIII:148467:C:G:ECM12:UPSTREAM:758:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
-483,TOR1,PBS2,1,['X:178655:G:C:PBS2:NON_SYNONYMOUS_CODING:caC/caG:H483Q:0/1'],['EvolvingFront_WGS_Plate5_H11']
+465,TOR1,PBS2,3,"['X:179445:C:A:PBS2:NON_SYNONYMOUS_CODING:cGt/cTt:R220L:1/1', 'X:178655:G:C:PBS2:NON_SYNONYMOUS_CODING:caC/caG:H483Q:0/1', 'X:179445:C:A:PBS2:NON_SYNONYMOUS_CODING:cGt/cTt:R220L:1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+466,TOR1,SIR1,1,['XI:642124:A:T:SIR1:NON_SYNONYMOUS_CODING:Acc/Tcc:T529S:0/1'],['EvolvingFront_WGS_Plate5_H11']
+467,TOR1,SSK2,7,"['XIV:682328:A:AT:SSK2:FRAME_SHIFT:aaa/aaaA:K1035K?:1/1', 'XIV:681087:AT:A:SSK2:FRAME_SHIFT:aat/:N1449:1/1', 'XIV:681335:T:TGACCATTTCATCTTCAATAC:SSK2:FRAME_SHIFT:gtc/gtcGTATTGAAGATGAAATGGTC:V1366VVLKMKW?:1', 'XIV:683670:TA:T:SSK2:FRAME_SHIFT:ata/:I588:1/1', 'XIV:684683:G:GT:SSK2:FRAME_SHIFT:aaa/aaaA:K250K?:1', 'XIV:683670:TA:T:SSK2:FRAME_SHIFT:ata/:I588:1', 'XIV:681317:G:A:SSK2:STOP_GAINED:Caa/Taa:Q1373*:1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+468,TOR1,YER187W,1,['V:566039:C:A:YER187W:UPSTREAM:191:nan:1/1'],['EvolvingFront_WGS_Plate5_H11']
+469,TOR1,UFD2,1,['IV:121376:T:C:UFD2:NON_SYNONYMOUS_CODING:Atc/Gtc:I73V:0/1'],['EvolvingFront_WGS_Plate5_H11']
+470,TOR1,STE20,1,['VIII:94974:T:G:STE20:DOWNSTREAM:144:nan:1/1'],['EvolvingFront_WGS_Plate5_H11']
+471,TOR1,POL2,1,['XIV:151373:A:T:POL2:NON_SYNONYMOUS_CODING:aaA/aaT:K1054N:0/1'],['EvolvingFront_WGS_Plate5_H11']
+472,TOR1,SIR4,1,['IV:919195:C:G:SIR4:stop_gained:c.1625C>G:p.Ser542*:1/1'],['EvolvingFront_WGS_Plate5_H11']
+473,TOR1,DNF3,1,['XIII:579919:A:G:DNF3:missense_variant:c.4003T>C:p.Cys1335Arg:1/1'],['EvolvingFront_WGS_Plate5_H11']
+474,TOR1,YNL017C,1,['XIV:602397:C:A:YNL017C:NON_SYNONYMOUS_CODING:tGt/tTt:C27F:1'],['EvolvingFront_WGS_Plate5_H11']
+475,TOR1,YRO2,1,['II:343133:T:A:YRO2:synonymous_variant:c.33T>A:p.Gly11Gly:0/1'],['EvolvingFront_WGS_Plate5_H11']
+476,TOR1,SMA2,1,['XIII:146102:C:T:SMA2:upstream_gene_variant:c.-4569G>A:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
+477,TOR1,BUD14,1,['I:166341:AT:A:BUD14:DOWNSTREAM:400:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
+478,TOR1,PAN3,1,['XI:391578:A:T:PAN3:STOP_GAINED:taT/taA:Y234*:1/1'],['EvolvingFront_WGS_Plate5_H11']
+479,TOR1,RIX7,1,['XII:72255:C:T:RIX7:NON_SYNONYMOUS_CODING:Gca/Aca:A298T:0/1'],['EvolvingFront_WGS_Plate5_H11']
+480,TOR1,IRA2,3,"['XV:173652:T:G:IRA2:stop_gained:c.2583T>G:p.Tyr861*:0/1', 'XV:174089:C:A:IRA2:stop_gained:c.3020C>A:p.Ser1007*:0/1', 'XV:179321:T:A:IRA2:NON_SYNONYMOUS_CODING:aTt/aAt:I2751N:0/1']","['EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11', 'EvolvingFront_WGS_Plate5_H11']"
+481,TOR1,UBC8,1,['V:132034:G:C:UBC8:missense_variant:c.140G>C:p.Gly47Ala:0/1'],['EvolvingFront_WGS_Plate5_H11']
+482,TOR1,PAB1,1,['V:510718:C:G:PAB1:NON_SYNONYMOUS_CODING:Cgt/Ggt:R116G:1/1'],['EvolvingFront_WGS_Plate5_H11']
+483,TOR1,ECM12,1,['VIII:148467:C:G:ECM12:UPSTREAM:758:nan:0/1'],['EvolvingFront_WGS_Plate5_H11']
 484,TOR1,POF1,1,['III:43712:C:A:POF1:NON_SYNONYMOUS_CODING:ttG/ttT:L242F:1'],['EvolvingFront_WGS_Plate5_H11']
 485,TOR1,ETP1,1,['VIII:83402:G:A:ETP1:NON_SYNONYMOUS_CODING:aCt/aTt:T107I:1'],['EvolvingFront_WGS_Plate5_H11']
 486,TOR1,RRN11,1,['XIII:191734:T:C:RRN11:NON_SYNONYMOUS_CODING:Aag/Gag:K12E:1'],['EvolvingFront_WGS_Plate5_H11']

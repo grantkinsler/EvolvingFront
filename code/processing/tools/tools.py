@@ -38,8 +38,8 @@ anc_color_map = {'WT':'k',
 #             }
 
 evo_cond_marker_map = {'Evo1D':'o',
-              'Evo2D':'^',
-              'Evo3D':'s',
+              'Evo2D':'.',
+              'Evo3D':'.',
               'Evo5D':'p',
               'Evo1_5D':'D',
               'unknown':'x',
@@ -84,7 +84,7 @@ gene_pathway_map = {
     'HOG':['HOG1','PBS2','SSK2'],
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
-    'Deadenylation':['PUF3','PAB1','PAN2','PAN3']}
+    'Deadenylation/Mitochondial Function':['PUF3','PAB1','PAN2','PAN3','AIM17']}
 
 # long_colors += ['gray']*(len(all_genes_sorted)-len(long_colors))
 
@@ -112,38 +112,87 @@ gene_pathway_map = {
 
 
 mutation_color_map = {
-    'KSP1':long_colors[4], # purple (b/c TOR pathway)
-    'PUF3':long_colors[1], # orange
-    'PAB1':long_colors[3], # red
-    
-    # browns 
+    ## Ras/PKA mutants
+    ## Blues
+    'IRA1':'#08519c', # blue (obviously)
+    'IRA2':'#08519c', # same color as Ira1
+    'GPB1':'#2171b5',
+    'GPB2':'#2171b5', # green
+    'PDE2':'#4292c6',
+    'CYR1':'#6baed6',
+    'GPR1':'#9ecae1',
+    'SHR5':'#9ecae1',
+    'TFS1':'#9ecae1',
+    'YAK1':'#9ecae1',
+
+    ## TOR/Sch9 mutants
+    ## Purples
+    'TOR1':'#bcbddc',
+    'SCH9':'#807dba',
+    'KSP1':'#54278f', # purple (b/c TOR pathway)
+
+    ## HOG mutants
+    ## Teals
+    # 'HOG1':long_colors[9],
+    # 'PBS2':long_colors[9],
+    # 'SSK2':long_colors[9], # teal
+    'HOG1':long_colors[9], # teal
+    'PBS2':'#00cdcd', # light teal
+    'SSK2':'#008080', # dark teal
+
+    ## RTG mutants
+    ## Browns
     'RTG2':'#8c510a', # dark brown
     'MKS1':'#bf812d', # medium brown 
-    
-    ### TCA cycle mutants green
+    'BMH1':'#af6f09', # caramel
+    'BMH2':'#af6f09', # caramel
+
+    ## TCA cycle mutants 
+    ## Greens
     'CIT1':'#006d2c', # darkest
     'KGD1':'#31a354',
     'MAE1':'#74c476',
     'MDH1':'#bae4b3', # lightest
     'MDH2':'#bae4b3', # lightest
 
+    ## Mitochondrial biogenesis
+    ## Oranges/Reds
+    'PUF3':long_colors[1], # orange
+    'PAB1':long_colors[3], # red
+    'PAN2':'#a50f15', # dark red
+    'PAN3':'#a50f15',
+    'AIM17':'#fc9272', # light red
 
-    'ARO80':long_colors[6], # pink
-    'GSH1':long_colors[7], # absolute gray
-
-    'SSK2':long_colors[9], # teal
+    ## Others
+    'ARO80':'#e377c2', # pink
+    'GSH1':'gold', # gold
     'MKT1':long_colors[8], # greenish yellow
     'MIT1':long_colors[10], 
-    'GPB2':long_colors[2], # green
-
-    'PAN2':'#a50f15',
-    'PAN3':'#a50f15',
-
-
-    'IRA1':long_colors[0], # blue (obviously)
-    'IRA2':long_colors[0], # same color as Ira1
+    
     'double_mutant':'k'
     }
+
+def find_mutation_color(gene):
+
+    if gene in mutation_color_map.keys():
+        return mutation_color_map[gene]
+    else:
+        return 'gray'
+
+def combine_hex_values(color_list):
+
+    color_list = [to_hex(color) for color in color_list] # convert to hex
+  
+    weights = [1/len(color_list) for c in color_list]
+    tot_weight = sum(weights)
+
+    red = int(sum([int(color[1:3], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
+    green = int(sum([int(color[3:5], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
+    blue = int(sum([int(color[5:7], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
+    zpad = lambda x: x if len(x)==2 else '0' + x
+    
+    return '#' + zpad(hex(red)[2:]) + zpad(hex(green)[2:]) + zpad(hex(blue)[2:])
+
 
 
 
@@ -253,27 +302,7 @@ def centroid(arr):
     return np.mean(arr,axis=0)
 
 
-def combine_hex_values(color_list):
 
-    color_list = [to_hex(color) for color in color_list] # convert to hex
-  
-    weights = [1/len(color_list) for c in color_list]
-    tot_weight = sum(weights)
-
-    red = int(sum([int(color[1:3], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
-    green = int(sum([int(color[3:5], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
-    blue = int(sum([int(color[5:7], 16)*weight for color,weight in zip(color_list,weights)])/tot_weight)
-    zpad = lambda x: x if len(x)==2 else '0' + x
-    
-    return '#' + zpad(hex(red)[2:]) + zpad(hex(green)[2:]) + zpad(hex(blue)[2:])
-
-
-def find_mutation_color(gene):
-
-    if gene in mutation_color_map.keys():
-        return mutation_color_map[gene]
-    else:
-        return 'gray'
 
 def hamming_distance(s1,s2):
     assert len(s1) == len(s2)
