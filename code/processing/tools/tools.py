@@ -51,7 +51,7 @@ anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#96
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
-             'IRA1_MIS':{'Evo1D':'#bdc9e1','Evo2D':'#bdc9e1','Evo3D':'#02818a','unknown':'#bdc9e1'},
+             'IRA1_MIS':{'Evo1D':'#bdc9e1','Evo2D':'#66b2b2','Evo3D':'#02818a','unknown':'#bdc9e1'},
              'IRA1_NON':{'Evo1D':'#bdd7e7','Evo2D':'#6baed6','Evo3D':'#2171b5','unknown':'#bdd7e7'}
             }
 
