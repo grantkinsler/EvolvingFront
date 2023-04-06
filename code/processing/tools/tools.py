@@ -47,7 +47,7 @@ evo_cond_marker_map = {'Evo1D':'o',
 
 ploidy_marker_map = {'haploid':'o','diploid':'^'}
 
-anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#969696','Evo1_5D':'#636363'},
+anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#969696','Evo3D':'k','Evo5D':'#969696','Evo1_5D':'#636363'},
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
@@ -58,7 +58,7 @@ anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#96
 
 color_map = {        
 #              'WT':{'Evo1D':'#cccccc','Evo2D':'#f7f7f7','Evo5D':'#969696','Evo1_5D':'#636363'},
-             'WT':{'Evo1D':'#cccccc','Evo2D':'#252525','Evo5D':'#969696','Evo1_5D':'#636363'},
+             'WT':{'Evo1D':'#cccccc','Evo2D':'#969696','Evo3D':'#969696','Evo5D':'#969696','Evo1_5D':'#636363'},
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
@@ -202,8 +202,8 @@ def combine_hex_values(color_list):
 
 labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
 lims = {
-        'FerPerHour':[-0.03,0.111],
-        # 'FerPerHour':[-0.005,0.065],
+        # 'FerPerHour':[-0.03,0.111],
+        'FerPerHour':[-0.005,0.065],
         'ResPerHour':[-0.03,0.111],
         'StaPerHour':[-0.11,0.02],
         'Fit1D_both2%5%_fitness':[-0.05,1.4],
