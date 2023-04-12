@@ -1,0 +1,291 @@
+
+
+# tools_path = f'{home_dir}/code/processing/tools/tools.py'
+# sys.path.append(os.path.dirname(os.path.expanduser(tools_path)))
+import tools as tools
+
+from matplotlib import gridspec
+from matplotlib.gridspec import GridSpec
+import seaborn as sns
+import matplotlib.pyplot as plt
+# from matplotlib import colors
+import matplotlib
+import numpy as np
+import pandas as p
+
+import os
+
+home_dir = '~/Documents/Stanford/Research/EvolvingFront/'
+home_dir = os.path.expanduser(home_dir)
+
+
+
+def tradeoff_figure(xdata,ydata,merged_fitness,
+		ancestor_list=[['WT'],['CYR1','GPB2','TOR1','IRA1_MIS','IRA1_NON'],['CYR1'],['GPB2'],['TOR1'],['IRA1_MIS'],['IRA1_NON']],
+		evo_cond_list=['Evo2D','Evo3D'],
+		centroids = False,
+		pathways = True,
+		annotate = False,
+		fitness_colorby = 'Fit2D_early_fitness',
+		innovation_list = {},
+		):
+
+
+# 	# colors = [tools.anc_color_map[anc] for anc in merged_fitness['ancestor']]
+# # colors = ['b' if source=='This_study' else 'r' if source=='Li2019' else 'orange' if source == 'Aggeli2020' else 'k' for source in nonan_merged['source_publication_x']]
+
+# # non_diploid = merged_fitness[merged_fitness['ploidy']!='Diploid']
+
+# xlabel = 'Fermentation per Hour'
+# ylabel = 'Respiration per Hour'
+# xdata = 'FerPerHour'
+# ydata = 'ResPerHour'
+
+# xlabel = 'Stationary per Hour'
+# ylabel = 'Respiration per Hour'
+# xdata = 'StaPerHour'
+# ydata = 'ResPerHour'
+# labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
+# lims = {'FerPerHour':[-0.05,0.07],'ResPerHour':[-0.05,0.12],'StaPerHour':[-0.09,0.045]}
+
+# # evo_cond_list = ['Evo1D']
+# evo_cond_list = ['Evo2D']
+# # evo_cond_list = ['Evo3D']
+# evo_cond_list = ['Evo1D','Evo2D','Evo3D']
+# evo_cond_list = ['Evo2D','Evo3D']
+
+# centroids = False
+# pathways = True
+# annotate = False
+
+# for xdata,ydata in combinations(['FerPerHour','ResPerHour','StaPerHour'],2):
+# # publication_list = [['This_study','Li2019','Aggeli2020','Venkataram2015'],['Venkataram2015'],['Li2019'],['Aggeli2020'],['This_study'],['Venkataram2015','This_study']] 
+#     ancestor_list = [['WT'],['CYR1','GPB2','TOR1','IRA1_MIS','IRA1_NON'],['CYR1'],['GPB2'],['TOR1'],['IRA1_MIS'],['IRA1_NON']]
+    
+    fig = plt.figure(figsize=(12,14))
+    outer_gs = gridspec.GridSpec(2, 1,height_ratios=[6,8])
+
+    # larger gridspec for First-step and all second-step mutants
+    few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0.25,hspace=0.25)
+
+    # smaller grid spec for each individual set of second-step mutants
+    many_inner_gs = gridspec.GridSpecFromSubplotSpec(2,3,subplot_spec = outer_gs[1],wspace=0.25,hspace=0.25)
+
+    for a,ancs in enumerate(ancestor_list):
+        
+        this_anc = merged_fitness[merged_fitness['ancestor'].isin(ancs)]
+        this_anc = this_anc[this_anc['evolution_condition'].isin(evo_cond_list)]
+        
+        these_pure_diploids = this_anc[this_anc['class_new']=='pure_diploids']['barcode'].values
+        these_neutral_haploids = this_anc[this_anc['class_new']=='neutral_haploids']['barcode'].values
+        
+        interesting_muts = this_anc[~this_anc['barcode'].isin(list(these_neutral_haploids)+list(these_pure_diploids))]
+        
+        if len(ancs) > 1:
+            fig.add_subplot(few_inner_gs[1]) 
+            
+        elif ancs[0] == 'WT':
+            fig.add_subplot(few_inner_gs[0]) 
+            
+        else:
+            fig.add_subplot(many_inner_gs[a-1])
+
+            for anc in ancs:
+                if anc != 'WT':
+                    this_pure_diploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='pure_diploids')]
+
+                    sns.kdeplot(x=this_pure_diploid[xdata].values,y=this_pure_diploid[ydata].values,
+                                color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,linestyles='--')
+
+                    this_neutral_haploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='neutral_haploids')]
+
+                    sns.kdeplot(x=this_neutral_haploid[xdata].values,y=this_neutral_haploid[ydata].values,
+                                color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4)
+
+#         for evo_cond in np.unique(this_anc['evolution_condition'].values):
+        for ploidy,ploidy_list in {'haploid':['Haploid','haploid',np.nan,'?','NotSequenced','other'],'diploid':['diploid','Diploid']}.items():
+#         for evo_cond in evo_cond_list:
+
+            gene_list = {}
+#             doubles_list = []
+
+            this_data = interesting_muts[interesting_muts['ploidy_new'].isin(ploidy_list)]
+            gray_alpha = 0.1
+            if centroids:
+                bold_alpha = 0.3
+            else:
+                bold_alpha = 0.7
+#             if len(ancs) < 2:
+            if True:
+                colors = []
+                annotation_list = []
+                for e,gene in enumerate(this_data['gene'].values):
+                    color_assigned = matplotlib.colors.to_rgba('gray',0.1)
+                    already_assigned = False
+                    if (not p.isnull(gene)) and (gene != 'NotSequenced'):
+                        if gene in tools.mutation_color_map.keys():
+                            if pathways:
+                                color_assigned = matplotlib.colors.to_rgba(tools.find_pathway_color(gene),bold_alpha)
+                            else:
+                                color_assigned = matplotlib.colors.to_rgba(tools.mutation_color_map[gene],bold_alpha)
+                            
+                            if gene in gene_list.keys():
+                                gene_list[gene].append(e)
+                            else:
+                                gene_list[gene] = [e]
+                        elif '+' in gene:
+                            color_assigned = matplotlib.colors.to_rgba(tools.mutation_color_map['double_mutant'],bold_alpha)
+                            if annotate:
+	                            if len(ancs) < 2 and ancs[0] != 'WT':
+	                                if this_data['barcode'].values[e] in innovation_list[f'{xdata}_{ydata}'][f'{anc}']:
+	                                    annotation_list.append([e,gene])
+#                                 else:
+#                                     annotation_list.append([e,gene])
+#                             if gene in gene_list.keys():
+#                                 gene_list[gene].append(e)
+#                             else:
+#                                 gene_list[gene] = [e]
+                        else:
+                            color_assigned = matplotlib.colors.to_rgba('gray',0.1)
+                    else:
+                            color_assigned = matplotlib.colors.to_rgba('gray',0.1)
+                    colors.append(color_assigned)
+            else:
+                colors = [tools.color_map[anc][evo_cond] for anc,evo_cond in zip(this_data['ancestor'],this_data['evolution_condition'])]
+
+            if len(ancs) > 1:
+                plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
+                            color=colors,marker=tools.ploidy_marker_map[ploidy])
+               
+                
+            else:
+                if centroids:
+                    alpha = 0.3
+                else:
+                    alpha = 0.7
+                
+                plt.scatter(this_data[xdata].values,this_data[ydata].values,linewidths=0,
+                            color=colors,marker=tools.ploidy_marker_map[ploidy],s=15,label=f'{ancs[0]} {ploidy}')
+        
+                if centroids:
+                    for gene,e_list in gene_list.items():
+
+                        gene_centroid = tools.centroid(this_data[[xdata,ydata]].values[e_list,:])
+
+                        plt.scatter(gene_centroid[0],gene_centroid[1],
+                                color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
+                                    marker=tools.ploidy_marker_map[ploidy],s=40,alpha=0.9)
+                
+    
+                for e,doubles in annotation_list:
+                    if annotate:
+                        plt.annotate(text=doubles.replace('+','+\n'),xy=(this_data[xdata].values[e],this_data[ydata].values[e]),
+                                 xytext=(this_data[xdata].values[e]+0.001,this_data[ydata].values[e]+0.001),
+                                 color='k',fontsize=8)
+                    plt.scatter(this_data[xdata].values[e],this_data[ydata].values[e],
+                                marker=tools.ploidy_marker_map[ploidy],
+                                color='k',s=15,alpha=0.5,linewidth=0.2)
+
+                plt.legend(loc='lower left',fontsize='small')
+                plt.title(f'{ancs[0]}')
+                
+
+        if len(ancs) < 2:
+            for anc in ancs:
+                if anc != 'WT':
+                    background_mutant = merged_fitness[merged_fitness['barcode']==tools.rebarcoding_source_mutants[anc]]
+                    plt.scatter(background_mutant[xdata].values,background_mutant[ydata].values,
+                                    marker='+',color=tools.anc_color_map[anc],s=100)
+
+                    plt.axvline(merged_fitness[merged_fitness['ancestor']==anc][xdata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2)
+                    plt.axhline(merged_fitness[merged_fitness['ancestor']==anc][ydata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2)
+
+
+    #             if anc != 'IRA1_NON':
+
+    #                 plt.axvline(,color=tools.anc_color_map[anc],alpha=0.2)
+    # #                 plt.axvspan(x_mean-multiplier*x_error,
+    # #                           x_mean+multiplier*x_error,
+    # #                           color=tools.anc_color_map[anc],alpha=0.05)
+
+    #                 plt.axhline(y_mean,color=tools.anc_color_map[anc],alpha=0.2)
+    # #                 plt.axhspan(y_mean-multiplier*y_error,
+    # #                           y_mean+multiplier*y_error,
+    # #                           color=tools.anc_color_map[anc],alpha=0.05)
+
+    #                 tradeoffs,n_obs,indices = count_tradeoffs(interesting_muts[xdata].values,
+    #                                                           interesting_muts[ydata].values,
+    #                                                           interesting_muts[xdata+'_error'].values,
+    #                                                           interesting_muts[ydata+'_error'].values,
+    #                     x_mean,y_mean,
+    #                     x_error,y_error,
+    #                     multiplier=multiplier)
+
+    #             else:
+    #                 plt.axvline(background_mutant[xdata].values,color=tools.anc_color_map[anc],alpha=0.2)
+    # #                 plt.axvspan(background_mutant[xdata].values-multiplier*background_mutant[xdata+'_error'].values,
+    # #                           background_mutant[xdata].values+multiplier*background_mutant[xdata+'_error'].values,
+    # #                           color=tools.anc_color_map[anc],alpha=0.05)
+
+    #                 plt.axhline(background_mutant[ydata].values,color=tools.anc_color_map[anc],alpha=0.2)
+    # #                 plt.axhspan(background_mutant[ydata].values-multiplier*background_mutant[ydata+'_error'].values,
+    # #                           background_mutant[ydata].values+multiplier*background_mutant[ydata+'_error'].values,
+    # #                           color=tools.anc_color_map[anc],alpha=0.05)
+
+    #                 tradeoffs,n_obs,indices = count_tradeoffs(interesting_muts[xdata].values,interesting_muts[ydata].values,
+    #                                                           interesting_muts[xdata+'_error'].values,interesting_muts[ydata+'_error'].values,
+    #                      background_mutant[xdata].values,background_mutant[ydata].values,
+    #                     background_mutant[xdata+'_error'].values,background_mutant[ydata+'_error'].values,
+    #                     multiplier=multiplier)
+
+    #             if anc!='WT'
+
+
+        plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
+        plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
+
+        plt.xlabel(tools.labels[xdata])
+        plt.ylabel(tools.labels[ydata])
+
+#         plt.axvline(0,color='k',linestyle=':')
+#         plt.axhline(0,color='k',linestyle=':')
+        
+        plt.axvline(0,color='gray',linestyle=':')
+        plt.axhline(0,color='gray',linestyle=':')
+        
+        
+        if (xdata == 'FerPerHour') & (ydata == 'ResPerHour'):
+            for fitness in [1.0,1.5,2.0,2.5,3.0,3.5]:
+                ferms = np.linspace(tools.lims[xdata][0],tools.lims[xdata][1],100)
+                resps = (fitness-16*ferms)/28 # 2day = 16*F
+                
+                norm = matplotlib.colors.Normalize(vmin=np.nanmin(merged_fitness[fitness_colorby]),
+                        vmax=np.nanmax(merged_fitness[fitness_colorby]))
+
+                cm = matplotlib.cm.ScalarMappable(norm=norm, cmap='Reds') 
+                
+                plt.plot(ferms,resps,color=cm.to_rgba(fitness),alpha=0.05)
+                plt.text(x=ferms[-1],y=resps[-1],s=f'{fitness}',color=cm.to_rgba(fitness),alpha=0.1,ha='right',va='top')
+            
+        
+        if len(ancs) > 1:
+            if pathways:
+                pathway_labels = []
+                for g,gene in enumerate(tools.mutation_color_map.keys()):
+                    if gene in tools.pathway_gene_map.keys():
+                        pathway_labels.append(tools.pathway_gene_map[gene])
+                    else:
+                        pathway_labels.append(gene)
+                
+#                 for p,pathway in enumerate(pathway_labels):
+#                     plt.text(y=0.4-0.02*(p%(len(pathway_labels))/2)),x=0.01+0.1*int(p/len(pathway_labels)*2),s=f'{gene}',color=tools.find_pathway_color[pathway],transform=plt.gca().transAxes)
+
+            else:
+                for g,gene in enumerate(tools.mutation_color_map.keys()):
+                    plt.text(y=0.4-0.02*(g%(len(tools.mutation_color_map.keys())/2)),x=0.01+0.1*int(g/len(tools.mutation_color_map.keys())*2),s=f'{gene}',color=tools.mutation_color_map[gene],transform=plt.gca().transAxes)
+
+    plt.tight_layout()
+    
+    plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_{"pathway" if pathways else "mutation"}_colors{"_centroids" if centroids else ""}{"_annotatedInnovations" if annotate else ""}.pdf',bbox_inches='tight')
+
+    return fig
