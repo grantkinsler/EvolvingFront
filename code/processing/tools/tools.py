@@ -47,7 +47,7 @@ evo_cond_marker_map = {'Evo1D':'o',
 
 ploidy_marker_map = {'haploid':'o','diploid':'^'}
 
-anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#969696','Evo3D':'k','Evo5D':'#969696','Evo1_5D':'#636363'},
+anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'k','Evo3D':'k','Evo5D':'#969696','Evo1_5D':'#636363'},
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
@@ -58,7 +58,7 @@ anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'#969696','Evo3D':'k',
 
 color_map = {        
 #              'WT':{'Evo1D':'#cccccc','Evo2D':'#f7f7f7','Evo5D':'#969696','Evo1_5D':'#636363'},
-             'WT':{'Evo1D':'#cccccc','Evo2D':'#969696','Evo3D':'#969696','Evo5D':'#969696','Evo1_5D':'#636363'},
+             'WT':{'Evo1D':'#cccccc','Evo2D':'k','Evo3D':'k','Evo5D':'#969696','Evo1_5D':'#636363'},
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
@@ -84,6 +84,10 @@ gene_pathway_map = {
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
     'Deadenylation/Mitochondial Function':['PUF3','PAB1','PAN2','PAN3','AIM17']}
+
+pathway_gene_map = {v:k for k,vs in gene_pathway_map.items() for v in vs}
+
+
 
 # long_colors += ['gray']*(len(all_genes_sorted)-len(long_colors))
 
@@ -175,12 +179,30 @@ mutation_color_map = {
     'double_mutant':'k'
     }
 
+pathway_color_map = {
+    'Ras/PKA':'#08519c', # blue (same as IRA1)
+    'TOR/Sch9':'#54278f', # purple (same as KSP1)
+    'HOG':long_colors[9], # teal (same as HOG1)
+    'RTG':'#8c510a', # dark brown (same as RTG2)
+    'TCA cycle':'#006d2c', # green (same as CIT1)
+    'Deadenylation/Mitochondial Function':long_colors[3], # red (same as PAB1)
+    }
+
 def find_mutation_color(gene):
 
     if gene in mutation_color_map.keys():
         return mutation_color_map[gene]
     else:
         return 'gray'
+
+
+def find_pathway_color(gene):
+
+    if gene in pathway_gene_map.keys():
+        return pathway_color_map[pathway_gene_map[gene]]
+    else:
+        return find_mutation_color(gene) 
+
 
 def combine_hex_values(color_list):
 
@@ -202,8 +224,8 @@ def combine_hex_values(color_list):
 
 labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
 lims = {
-        # 'FerPerHour':[-0.03,0.111],
-        'FerPerHour':[-0.005,0.065],
+        'FerPerHour':[-0.03,0.111],
+        # 'FerPerHour':[-0.005,0.065],
         'ResPerHour':[-0.03,0.111],
         'StaPerHour':[-0.11,0.02],
         'Fit1D_both2%5%_fitness':[-0.05,1.4],
