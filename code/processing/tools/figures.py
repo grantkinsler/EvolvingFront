@@ -86,21 +86,31 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
             
         elif ancs[0] == 'WT':
             fig.add_subplot(few_inner_gs[0]) 
+
+            for anc in ancs:
+                this_pure_diploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='pure_diploids')]
+
+                sns.kdeplot(x=this_pure_diploid[xdata].values,y=this_pure_diploid[ydata].values,
+                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,linestyles='--')
+
+                this_neutral_haploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='neutral_haploids')]
+
+                sns.kdeplot(x=this_neutral_haploid[xdata].values,y=this_neutral_haploid[ydata].values,
+                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4)
             
         else:
             fig.add_subplot(many_inner_gs[a-1])
 
             for anc in ancs:
-                if anc != 'WT':
-                    this_pure_diploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='pure_diploids')]
+                this_pure_diploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='pure_diploids')]
 
-                    sns.kdeplot(x=this_pure_diploid[xdata].values,y=this_pure_diploid[ydata].values,
-                                color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,linestyles='--')
+                sns.kdeplot(x=this_pure_diploid[xdata].values,y=this_pure_diploid[ydata].values,
+                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,linestyles='--')
 
-                    this_neutral_haploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='neutral_haploids')]
+                this_neutral_haploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='neutral_haploids')]
 
-                    sns.kdeplot(x=this_neutral_haploid[xdata].values,y=this_neutral_haploid[ydata].values,
-                                color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4)
+                sns.kdeplot(x=this_neutral_haploid[xdata].values,y=this_neutral_haploid[ydata].values,
+                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4)
 
 #         for evo_cond in np.unique(this_anc['evolution_condition'].values):
         for ploidy,ploidy_list in {'haploid':['Haploid','haploid',np.nan,'?','NotSequenced','other'],'diploid':['diploid','Diploid']}.items():
@@ -146,9 +156,9 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
 #                             else:
 #                                 gene_list[gene] = [e]
                         else:
-                            color_assigned = matplotlib.colors.to_rgba('gray',0.1)
+                            color_assigned = matplotlib.colors.to_rgba('gray',0.2)
                     else:
-                            color_assigned = matplotlib.colors.to_rgba('gray',0.1)
+                            color_assigned = matplotlib.colors.to_rgba('gray',0.2)
                     colors.append(color_assigned)
             else:
                 colors = [tools.color_map[anc][evo_cond] for anc,evo_cond in zip(this_data['ancestor'],this_data['evolution_condition'])]
@@ -156,18 +166,16 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
             if len(ancs) > 1:
                 plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
                             color=colors,marker=tools.ploidy_marker_map[ploidy])
+
+                plt.title('All Second Step')
                
                 
             else:
                 if centroids:
                     alpha = 0.3
-                else:
-                    alpha = 0.7
-                
-                plt.scatter(this_data[xdata].values,this_data[ydata].values,linewidths=0,
+
+                    plt.scatter(this_data[xdata].values,this_data[ydata].values,linewidths=0,
                             color=colors,marker=tools.ploidy_marker_map[ploidy],s=15,label=f'{ancs[0]} {ploidy}')
-        
-                if centroids:
                     for gene,e_list in gene_list.items():
 
                         gene_centroid = tools.centroid(this_data[[xdata,ydata]].values[e_list,:])
@@ -175,7 +183,12 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                         plt.scatter(gene_centroid[0],gene_centroid[1],
                                 color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
                                     marker=tools.ploidy_marker_map[ploidy],s=40,alpha=0.9)
-                
+                else:
+                    alpha = 0.7
+
+                    plt.scatter(this_data[xdata].values,this_data[ydata].values,linewidths=0,
+                            color=colors,marker=tools.ploidy_marker_map[ploidy])
+
     
                 for e,doubles in annotation_list:
                     if annotate:
@@ -186,7 +199,7 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                                 marker=tools.ploidy_marker_map[ploidy],
                                 color='k',s=15,alpha=0.5,linewidth=0.2)
 
-                plt.legend(loc='lower left',fontsize='small')
+                # plt.legend(loc='lower left',fontsize='small')
                 plt.title(f'{ancs[0]}')
                 
 
@@ -240,33 +253,45 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
 
     #             if anc!='WT'
 
-
         plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
         plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
-
-        plt.xlabel(tools.labels[xdata])
-        plt.ylabel(tools.labels[ydata])
-
-#         plt.axvline(0,color='k',linestyle=':')
-#         plt.axhline(0,color='k',linestyle=':')
         
-        plt.axvline(0,color='gray',linestyle=':')
-        plt.axhline(0,color='gray',linestyle=':')
-        
-        
-        if (xdata == 'FerPerHour') & (ydata == 'ResPerHour'):
-            for fitness in [1.0,1.5,2.0,2.5,3.0,3.5]:
-                ferms = np.linspace(tools.lims[xdata][0],tools.lims[xdata][1],100)
-                resps = (fitness-16*ferms)/28 # 2day = 16*F
-                
-                norm = matplotlib.colors.Normalize(vmin=np.nanmin(merged_fitness[fitness_colorby]),
-                        vmax=np.nanmax(merged_fitness[fitness_colorby]))
 
-                cm = matplotlib.cm.ScalarMappable(norm=norm, cmap='Reds') 
-                
-                plt.plot(ferms,resps,color=cm.to_rgba(fitness),alpha=0.05)
-                plt.text(x=ferms[-1],y=resps[-1],s=f'{fitness}',color=cm.to_rgba(fitness),alpha=0.1,ha='right',va='top')
-            
+        if len(ancs) >1:
+
+        	plt.xlabel(f'{tools.labels[xdata]} relative to parental strain')
+	        plt.ylabel(f'{tools.labels[ydata]} relative to parental strain')
+
+	#         plt.axvline(0,color='k',linestyle=':')
+	#         plt.axhline(0,color='k',linestyle=':')
+	        
+	        plt.axvline(0,color='gray',linestyle='-')
+	        plt.axhline(0,color='gray',linestyle='-')
+
+       	else:
+
+            plt.xlabel(tools.labels[xdata])
+            plt.ylabel(tools.labels[ydata])
+
+            #         plt.axvline(0,color='k',linestyle=':')
+            #         plt.axhline(0,color='k',linestyle=':')
+
+            plt.axvline(0,color='gray',linestyle=':')
+            plt.axhline(0,color='gray',linestyle=':')
+
+            if (xdata == 'FerPerHour') & (ydata == 'ResPerHour'):
+                for fitness in [1.0,1.5,2.0,2.5,3.0,3.5]:
+                    ferms = np.linspace(tools.lims[xdata][0],tools.lims[xdata][1],100)
+                    resps = (fitness-16*ferms)/28 # 2day = 16*F
+                    
+                    norm = matplotlib.colors.Normalize(vmin=np.nanmin(merged_fitness[fitness_colorby]),
+                            vmax=np.nanmax(merged_fitness[fitness_colorby]))
+
+                    cm = matplotlib.cm.ScalarMappable(norm=norm, cmap='Reds') 
+                    
+                    plt.plot(ferms,resps,color=cm.to_rgba(fitness),alpha=0.05)
+                    plt.text(x=ferms[-1],y=resps[-1],s=f'{fitness}',color=cm.to_rgba(fitness),alpha=0.1,ha='right',va='top')
+
         
         if len(ancs) > 1:
             if pathways:

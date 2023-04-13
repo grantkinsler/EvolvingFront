@@ -224,9 +224,11 @@ def combine_hex_values(color_list):
 
 labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
 lims = {
-        'FerPerHour':[-0.03,0.111],
-        # 'FerPerHour':[-0.005,0.065],
-        'ResPerHour':[-0.03,0.111],
+        # 'FerPerHour':[-0.03,0.111],
+        # # 'FerPerHour':[-0.005,0.065],
+        # 'ResPerHour':[-0.03,0.111],
+        'FerPerHour':[-0.042,0.111],
+        'ResPerHour':[-0.042,0.111],
         'StaPerHour':[-0.11,0.02],
         'Fit1D_both2%5%_fitness':[-0.05,1.4],
         'Fit2D_early_fitness':[-0.3,3.5],
