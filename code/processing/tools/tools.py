@@ -203,6 +203,14 @@ def find_pathway_color(gene):
     else:
         return find_mutation_color(gene) 
 
+def find_pathway(gene):
+
+    if gene in pathway_gene_map.keys():
+        return pathway_gene_map[gene]
+    elif find_mutation_color(gene) != 'gray':
+        return gene
+    else:
+        return 'other'
 
 def combine_hex_values(color_list):
 

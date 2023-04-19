@@ -19,6 +19,22 @@ home_dir = '~/Documents/Stanford/Research/EvolvingFront/'
 home_dir = os.path.expanduser(home_dir)
 
 
+def plot_kdes(ax,this_anc,ancs,xdata,ydata):
+
+    for anc in ancs:
+            this_pure_diploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='pure_diploids')]
+
+            sns.kdeplot(x=this_pure_diploid[xdata].values,y=this_pure_diploid[ydata].values,
+                        color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,linestyles='--',ax=ax)
+
+            this_neutral_haploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='neutral_haploids')]
+
+            sns.kdeplot(x=this_neutral_haploid[xdata].values,y=this_neutral_haploid[ydata].values,
+                        color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,ax=ax)
+
+    return ax
+
+
 
 def tradeoff_figure(xdata,ydata,merged_fitness,
 		ancestor_list=[['WT'],['CYR1','GPB2','TOR1','IRA1_MIS','IRA1_NON'],['CYR1'],['GPB2'],['TOR1'],['IRA1_MIS'],['IRA1_NON']],
@@ -82,35 +98,17 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
         interesting_muts = this_anc[~this_anc['barcode'].isin(list(these_neutral_haploids)+list(these_pure_diploids))]
         
         if len(ancs) > 1:
-            fig.add_subplot(few_inner_gs[1]) 
+            ax = fig.add_subplot(few_inner_gs[1]) 
+            plot_kdes(ax,this_anc,ancs,xdata+'_relative',ydata+'_relative')
             
         elif ancs[0] == 'WT':
-            fig.add_subplot(few_inner_gs[0]) 
-
-            for anc in ancs:
-                this_pure_diploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='pure_diploids')]
-
-                sns.kdeplot(x=this_pure_diploid[xdata].values,y=this_pure_diploid[ydata].values,
-                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,linestyles='--')
-
-                this_neutral_haploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='neutral_haploids')]
-
-                sns.kdeplot(x=this_neutral_haploid[xdata].values,y=this_neutral_haploid[ydata].values,
-                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4)
+            ax = fig.add_subplot(few_inner_gs[0]) 
+            plot_kdes(ax,this_anc,ancs,xdata,ydata)
             
         else:
-            fig.add_subplot(many_inner_gs[a-1])
+            ax = fig.add_subplot(many_inner_gs[a-1])
 
-            for anc in ancs:
-                this_pure_diploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='pure_diploids')]
-
-                sns.kdeplot(x=this_pure_diploid[xdata].values,y=this_pure_diploid[ydata].values,
-                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4,linestyles='--')
-
-                this_neutral_haploid = this_anc[(this_anc['ancestor']==anc) & (this_anc['class_new']=='neutral_haploids')]
-
-                sns.kdeplot(x=this_neutral_haploid[xdata].values,y=this_neutral_haploid[ydata].values,
-                            color=tools.anc_color_map[anc],alpha=0.4,thresh=0.2,levels=4)
+            plot_kdes(ax,this_anc,ancs,xdata,ydata)
 
 #         for evo_cond in np.unique(this_anc['evolution_condition'].values):
         for ploidy,ploidy_list in {'haploid':['Haploid','haploid',np.nan,'?','NotSequenced','other'],'diploid':['diploid','Diploid']}.items():
@@ -136,13 +134,20 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                         if gene in tools.mutation_color_map.keys():
                             if pathways:
                                 color_assigned = matplotlib.colors.to_rgba(tools.find_pathway_color(gene),bold_alpha)
+                                pathway = tools.find_pathway(gene)
+                                
+                                if pathway in gene_list.keys():
+                                    gene_list[pathway].append(e)
+                                else:
+                                    gene_list[pathway] = [e]
+
                             else:
                                 color_assigned = matplotlib.colors.to_rgba(tools.mutation_color_map[gene],bold_alpha)
                             
-                            if gene in gene_list.keys():
-                                gene_list[gene].append(e)
-                            else:
-                                gene_list[gene] = [e]
+                                if gene in gene_list.keys():
+                                    gene_list[gene].append(e)
+                                else:
+                                    gene_list[gene] = [e]
                         elif '+' in gene:
                             color_assigned = matplotlib.colors.to_rgba(tools.mutation_color_map['double_mutant'],bold_alpha)
                             if annotate:
@@ -164,7 +169,22 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                 colors = [tools.color_map[anc][evo_cond] for anc,evo_cond in zip(this_data['ancestor'],this_data['evolution_condition'])]
 
             if len(ancs) > 1:
-                plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
+
+                if centroids:
+                    alpha = 0.3
+
+                    plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
+                            color=colors,marker=tools.ploidy_marker_map[ploidy],s=15,label=f'{ancs[0]} {ploidy}')
+                    for gene,e_list in gene_list.items():
+
+                        gene_centroid = tools.centroid(this_data[[xdata+'_relative',ydata+'_relative']].values[e_list,:])
+
+                        plt.scatter(gene_centroid[0],gene_centroid[1],
+                                color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
+                                    marker=tools.ploidy_marker_map[ploidy],s=40,alpha=0.9)
+
+                else:
+                    plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
                             color=colors,marker=tools.ploidy_marker_map[ploidy])
 
                 plt.title('All Second Step')
@@ -210,8 +230,8 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                     plt.scatter(background_mutant[xdata].values,background_mutant[ydata].values,
                                     marker='+',color=tools.anc_color_map[anc],s=100)
 
-                    plt.axvline(merged_fitness[merged_fitness['ancestor']==anc][xdata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2)
-                    plt.axhline(merged_fitness[merged_fitness['ancestor']==anc][ydata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2)
+                    plt.axvline(merged_fitness[merged_fitness['ancestor']==anc][xdata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
+                    plt.axhline(merged_fitness[merged_fitness['ancestor']==anc][ydata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
 
 
     #             if anc != 'IRA1_NON':
@@ -265,8 +285,8 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
 	#         plt.axvline(0,color='k',linestyle=':')
 	#         plt.axhline(0,color='k',linestyle=':')
 	        
-	        plt.axvline(0,color='gray',linestyle='-')
-	        plt.axhline(0,color='gray',linestyle='-')
+	        plt.axvline(0,color='gray',linestyle='-',zorder=0)
+	        plt.axhline(0,color='gray',linestyle='-',zorder=0)
 
        	else:
 
@@ -276,8 +296,8 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
             #         plt.axvline(0,color='k',linestyle=':')
             #         plt.axhline(0,color='k',linestyle=':')
 
-            plt.axvline(0,color='gray',linestyle=':')
-            plt.axhline(0,color='gray',linestyle=':')
+            plt.axvline(0,color='gray',linestyle=':',zorder=0)
+            plt.axhline(0,color='gray',linestyle=':',zorder=0)
 
             if (xdata == 'FerPerHour') & (ydata == 'ResPerHour'):
                 for fitness in [1.0,1.5,2.0,2.5,3.0,3.5]:
