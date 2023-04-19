@@ -26,7 +26,7 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
 		centroids = False,
 		pathways = True,
 		annotate = False,
-		fitness_colorby = 'Fit2D_early_fitness',
+		nullcline_fitness = 'Fit2D_early_fitness',
 		innovation_list = {},
 		):
 
@@ -284,8 +284,8 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                     ferms = np.linspace(tools.lims[xdata][0],tools.lims[xdata][1],100)
                     resps = (fitness-16*ferms)/28 # 2day = 16*F
                     
-                    norm = matplotlib.colors.Normalize(vmin=np.nanmin(merged_fitness[fitness_colorby]),
-                            vmax=np.nanmax(merged_fitness[fitness_colorby]))
+                    norm = matplotlib.colors.Normalize(vmin=np.nanmin(merged_fitness[nullcline_fitness]),
+                            vmax=np.nanmax(merged_fitness[nullcline_fitness]))
 
                     cm = matplotlib.cm.ScalarMappable(norm=norm, cmap='Reds') 
                     
