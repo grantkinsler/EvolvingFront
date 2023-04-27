@@ -37,6 +37,10 @@ anc_color_map = {'WT':'k',
 #              'IRA1_NON':'#1f78b4',
 #             }
 
+# anc_labels = {'WT':'First-step',
+#                 'GPB2':'\text{it}'
+#             }
+
 evo_cond_marker_map = {'Evo1D':'o',
               'Evo2D':'.',
               'Evo3D':'.',
