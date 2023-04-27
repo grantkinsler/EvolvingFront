@@ -47,37 +47,6 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
 		):
 
 
-# 	# colors = [tools.anc_color_map[anc] for anc in merged_fitness['ancestor']]
-# # colors = ['b' if source=='This_study' else 'r' if source=='Li2019' else 'orange' if source == 'Aggeli2020' else 'k' for source in nonan_merged['source_publication_x']]
-
-# # non_diploid = merged_fitness[merged_fitness['ploidy']!='Diploid']
-
-# xlabel = 'Fermentation per Hour'
-# ylabel = 'Respiration per Hour'
-# xdata = 'FerPerHour'
-# ydata = 'ResPerHour'
-
-# xlabel = 'Stationary per Hour'
-# ylabel = 'Respiration per Hour'
-# xdata = 'StaPerHour'
-# ydata = 'ResPerHour'
-# labels = {'FerPerHour':'Fermentation per Hour','ResPerHour':'Respiration per Hour','StaPerHour':'Stationary per Hour'}
-# lims = {'FerPerHour':[-0.05,0.07],'ResPerHour':[-0.05,0.12],'StaPerHour':[-0.09,0.045]}
-
-# # evo_cond_list = ['Evo1D']
-# evo_cond_list = ['Evo2D']
-# # evo_cond_list = ['Evo3D']
-# evo_cond_list = ['Evo1D','Evo2D','Evo3D']
-# evo_cond_list = ['Evo2D','Evo3D']
-
-# centroids = False
-# pathways = True
-# annotate = False
-
-# for xdata,ydata in combinations(['FerPerHour','ResPerHour','StaPerHour'],2):
-# # publication_list = [['This_study','Li2019','Aggeli2020','Venkataram2015'],['Venkataram2015'],['Li2019'],['Aggeli2020'],['This_study'],['Venkataram2015','This_study']] 
-#     ancestor_list = [['WT'],['CYR1','GPB2','TOR1','IRA1_MIS','IRA1_NON'],['CYR1'],['GPB2'],['TOR1'],['IRA1_MIS'],['IRA1_NON']]
-    
     fig = plt.figure(figsize=(12,14))
     outer_gs = gridspec.GridSpec(2, 1,height_ratios=[6,8])
 
