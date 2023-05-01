@@ -244,7 +244,7 @@ lims = {
         'StaPerHour':[-0.11,0.02],
         'FerPerHour_relative':[-0.042,0.111],
         'ResPerHour_relative':[-0.042,0.111],
-        'StaPerHour_relative':[-0.11,0.02],
+        'StaPerHour_relative':[-0.08,0.035],
         'Fit1D_both2%5%_fitness':[-0.05,1.4],
         'Fit2D_early_fitness':[-0.3,3.5],
         'Fit3D_both2%5%_fitness':[-1.0,3.1],
