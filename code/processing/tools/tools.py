@@ -193,6 +193,7 @@ pathway_color_map = {
     'RTG':'#8c510a', # dark brown (same as RTG2)
     'TCA cycle':'#006d2c', # green (same as CIT1)
     'Deadenylation/Mitochondial Function':long_colors[3], # red (same as PAB1)
+    'Other':'gray'
     }
 
 def find_mutation_color(gene):
