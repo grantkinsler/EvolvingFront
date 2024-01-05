@@ -54,7 +54,7 @@ ploidy_marker_map = {'haploid':'o','diploid':'^'}
 anc_evo_cond_color_map = {'WT':{'Evo1D':'#cccccc','Evo2D':'k','Evo3D':'k','Evo5D':'#969696','Evo1_5D':'#636363'},
              # 'all_second_step':{'Evo2D':'#fe9929','Evo3D':'#d95f0e'},
              # 'all_second_step':{'Evo2D':'#fdae6b','Evo3D':'#e6550d'},
-             'all_second_step':{'Evo2D':'#fd8d3c','Evo3D':'#d94701'},
+             'all_second_step':{'Evo1D':'r','Evo2D':'#fd8d3c','Evo3D':'#d94701'},
              'GPB2':{'Evo1D':'#bae4b3','Evo2D':'#74c476','Evo3D':'#238b45','unknown':'#bae4b3'},
              'CYR1':{'Evo1D':'#fcae91','Evo2D':'#fb6a4a','Evo3D':'#cb181d','unknown':'#fcae91'},
              'TOR1':{'Evo1D':'#cbc9e2','Evo2D':'#9e9ac8','Evo3D':'#6a51a3','unknown':'#cbc9e2'},
