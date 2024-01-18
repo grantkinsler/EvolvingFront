@@ -12,7 +12,7 @@ PROCESSING DATA
 
 All code used to process data is contained in the directory code/processing.
 
-Code for processing data Fitness Measurement experiments is contained in the directory code/processingFitnessMeasurements. It can be run using the following workflow:
+Code for processing data Fitness Measurement experiments is contained in the directory code/processing/FitnessMeasurements. It can be run using the following workflow:
 
 (1) Map raw fastq files to barcode counts using BarcodeCounter2 the files and scripts used are contained in the SequenceToCount directory.
 (2) Process barcode counts to fitness estimates
@@ -21,8 +21,14 @@ Code for processing mutation data is in the directory code/processing/WGS
 
 Post-processing was done by running the wrapper frequency_trajectories.ipynb which also contains some analysis as to quality of fitness measurment experiments.
 
+fitness_analysis.ipynb contains analysis of replicate-replicate correlations and frequency-dependent fitness effects. 
 
 
+
+
+DATA ANALYSIS
+
+Code for data analysis is contained in the directory code/analysis.
 
 
 
