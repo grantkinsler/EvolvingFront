@@ -29,6 +29,14 @@ anc_color_map = {'WT':'k',
              'all_second':'orange',
             }
 
+anc_names = {'WT':'WT',
+             'GPB2':'GPB2',
+             'CYR1':'CYR1',
+             'TOR1':'TOR1',
+             'IRA1_MIS':'IRA1\nmissense',
+             'IRA1_NON':'IRA1\nnonsense',
+             }
+
 # anc_color_map = {'WT':'k',
 #              'GPB2':'#4daf4a',
 #              'CYR1':'#e41a1c',
