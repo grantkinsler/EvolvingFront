@@ -44,6 +44,7 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
 		annotate = False,
 		nullcline_fitness = 'Fit2D_early_fitness',
 		innovation_list = {},
+        savefig=False
 		):
 
 
@@ -299,7 +300,9 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                     plt.text(y=0.4-0.02*(g%(len(tools.mutation_color_map.keys())/2)),x=0.01+0.1*int(g/len(tools.mutation_color_map.keys())*2),s=f'{gene}',color=tools.mutation_color_map[gene],transform=plt.gca().transAxes)
 
     plt.tight_layout()
+
+    if savefig:
     
-    plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_{"pathway" if pathways else "mutation"}_colors{"_centroids" if centroids else ""}{"_annotatedInnovations" if annotate else ""}.pdf',bbox_inches='tight')
+        plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_{"pathway" if pathways else "mutation"}_colors{"_centroids" if centroids else ""}{"_annotatedInnovations" if annotate else ""}.pdf',bbox_inches='tight')
 
     return fig
