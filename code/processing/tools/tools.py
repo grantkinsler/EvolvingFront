@@ -98,7 +98,9 @@ gene_pathway_map = {
     'HOG':['HOG1','PBS2','SSK2'],
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
-    'Deadenylation/Mitochondial Function':['PUF3','PAB1','PAN2','PAN3','AIM17']}
+    # 'Others':['ARO80','MKT1','GSH1'],
+    # 'Deadenylation/Mitochondial Function':['PUF3','PAB1','PAN2','PAN3','AIM17'],}
+    'Deadenylation/Mitochondial Function':['PAB1','PAN2','PAN3','AIM17']}
 
 pathway_gene_map = {v:k for k,vs in gene_pathway_map.items() for v in vs}
 
@@ -215,7 +217,10 @@ def find_mutation_color(gene):
 def find_pathway_color(gene):
 
     if gene in pathway_gene_map.keys():
-        return pathway_color_map[pathway_gene_map[gene]]
+        if pathway_gene_map[gene] != 'Others':
+            return pathway_color_map[pathway_gene_map[gene]]
+        else:
+            return find_mutation_color(gene) 
     else:
         return find_mutation_color(gene) 
 
