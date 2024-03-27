@@ -67,7 +67,8 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
     outer_gs = gridspec.GridSpec(2, 1,height_ratios=[6,8])
 
     # larger gridspec for First-step and all second-step mutants
-    few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0.25,hspace=0.25)
+    # few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0.25,hspace=0.25)
+    few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0,hspace=0)
 
     # smaller grid spec for each individual set of second-step mutants
     many_inner_gs = gridspec.GridSpecFromSubplotSpec(2,3,subplot_spec = outer_gs[1],wspace=0.25,hspace=0.25)
@@ -216,9 +217,11 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                     plt.axvline(merged_fitness[merged_fitness['ancestor']==anc][xdata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
                     plt.axhline(merged_fitness[merged_fitness['ancestor']==anc][ydata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
 
-        plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
-        plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
-        
+        # plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
+        # plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
+
+        plt.xlim(tools.lims[xdata+'_relative'][0],tools.lims[xdata+'_relative'][1])
+        plt.ylim(tools.lims[ydata+'_relative'][0],tools.lims[ydata+'_relative'][1])
 
         if len(ancs) >1:
 

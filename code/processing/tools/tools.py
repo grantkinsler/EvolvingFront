@@ -99,7 +99,7 @@ gene_pathway_map = {
     'HOG':['HOG1','PBS2','SSK2'],
     'RTG':['RTG2','MKS1','BMH1','BMH2'],
     'TCA cycle':['CIT1','KGD1','MDH1','MAE1','ALD5'],
-    'Other':['ARO80','MKT1','GSH1'],
+    # 'Other':['ARO80','MKT1','GSH1'],
     # 'Deadenylation/Mitochondial Function':['PUF3','PAB1','PAN2','PAN3','AIM17'],}
     # 'Deadenylation/Mitochondial Function':['PUF3','PAB1','PAN2','PAN3','AIM17']
     'Deadenylation/Mitochondial Function':['PAB1','PAN2','PAN3','AIM17']
