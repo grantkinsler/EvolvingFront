@@ -52,6 +52,8 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
 		ancestor_list=[['WT'],['CYR1','GPB2','TOR1','IRA1_MIS','IRA1_NON'],['WT'],['CYR1'],['GPB2'],['TOR1'],['IRA1_MIS'],['IRA1_NON']],
 		evo_cond_list=['Evo2D','Evo3D'],
         pathway_list=['Ras/PKA','TOR/Sch9','HOG','RTG','TCA cycle','Deadenylation/Mitochondial Function'],
+        # gene_exclusion_list=['MTH1'],
+        centroid_cutoff = 2,
 		centroids = False,
 		pathways = True,
 		annotate = False,
@@ -60,6 +62,7 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
         savefig=False,
         gray_alpha=0.2,
         legend=False,
+        relative=False
 		):
 
 
@@ -67,8 +70,8 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
     outer_gs = gridspec.GridSpec(2, 1,height_ratios=[6,8])
 
     # larger gridspec for First-step and all second-step mutants
-    # few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0.25,hspace=0.25)
-    few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0,hspace=0)
+    few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0.25,hspace=0.25)
+    # few_inner_gs = gridspec.GridSpecFromSubplotSpec(1,2,subplot_spec = outer_gs[0],wspace=0,hspace=0)
 
     # smaller grid spec for each individual set of second-step mutants
     many_inner_gs = gridspec.GridSpecFromSubplotSpec(2,3,subplot_spec = outer_gs[1],wspace=0.25,hspace=0.25)
@@ -158,15 +161,17 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                 if centroids:
                     alpha = 0.7
 
-                    plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
+                    plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,alpha=gray_alpha,
                             color=colors,marker=tools.ploidy_marker_map[ploidy],s=15,label=f'{ancs[0]} {ploidy}')
                     for gene,e_list in gene_list.items():
 
-                        gene_centroid = tools.centroid(this_data[[xdata+'_relative',ydata+'_relative']].values[e_list,:])
+                        if len(e_list) > centroid_cutoff:
 
-                        plt.scatter(gene_centroid[0],gene_centroid[1],
-                                color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
-                                    marker=tools.ploidy_marker_map[ploidy],s=40,alpha=0.9)
+                            gene_centroid = tools.centroid(this_data[[xdata+'_relative',ydata+'_relative']].values[e_list,:])
+
+                            plt.scatter(gene_centroid[0],gene_centroid[1],
+                                    color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
+                                        marker=tools.ploidy_marker_map[ploidy],s=40,alpha=0.9)
 
                 else:
                     plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
@@ -179,15 +184,17 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                 if centroids:
                     alpha = 0.7
 
-                    plt.scatter(this_data[xdata].values,this_data[ydata].values,linewidths=0,
+                    plt.scatter(this_data[xdata].values,this_data[ydata].values,linewidths=0,alpha=gray_alpha,
                             color=colors,marker=tools.ploidy_marker_map[ploidy],s=15,label=f'{ancs[0]} {ploidy}')
                     for gene,e_list in gene_list.items():
+
+                        # if len(e_list) > centroid_cutoff:
 
                         gene_centroid = tools.centroid(this_data[[xdata,ydata]].values[e_list,:])
 
                         plt.scatter(gene_centroid[0],gene_centroid[1],
-                                color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
-                                    marker=tools.ploidy_marker_map[ploidy],s=40,alpha=0.9)
+                            color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
+                                marker=tools.ploidy_marker_map[ploidy],s=40,alpha=0.9)
                 else:
                     alpha = 0.7
 
@@ -217,11 +224,15 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
                     plt.axvline(merged_fitness[merged_fitness['ancestor']==anc][xdata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
                     plt.axhline(merged_fitness[merged_fitness['ancestor']==anc][ydata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
 
-        # plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
-        # plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
 
-        plt.xlim(tools.lims[xdata+'_relative'][0],tools.lims[xdata+'_relative'][1])
-        plt.ylim(tools.lims[ydata+'_relative'][0],tools.lims[ydata+'_relative'][1])
+
+        if relative:
+            plt.xlim(tools.lims[xdata+'_relative'][0],tools.lims[xdata+'_relative'][1])
+            plt.ylim(tools.lims[ydata+'_relative'][0],tools.lims[ydata+'_relative'][1])
+        else:
+            plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
+            plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
+
 
         if len(ancs) >1:
 
@@ -246,8 +257,21 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
             plt.axhline(0,color='gray',linestyle=':',zorder=0)
 
             if (xdata == 'FerPerHour') & (ydata == 'ResPerHour'):
-                for fitness in [1.0,1.5,2.0,2.5,3.0,3.5]:
+                if relative:
+                    f_list = [1.0,1.5,2.0,2.5,3.0]
+                    ferms = np.linspace(tools.lims[xdata+'_relative'][0],tools.lims[xdata+'_relative'][1],100)
+                else:
+                    f_list = [1.0,1.5,2.0,2.5,3.,3.50]
                     ferms = np.linspace(tools.lims[xdata][0],tools.lims[xdata][1],100)
+
+
+                for fitness in f_list:
+
+                # # for fitness in [1.0,1.5,2.0,2.5,3.0,3.5]:
+                # #     # ferms = np.linspace(tools.lims[xdata][0],tools.lims[xdata][1],100)
+                # for fitness in [1.0,1.5,2.0,2.5,3.0]:
+                #     ferms = np.linspace(tools.lims[xdata+'_relative'][0],tools.lims[xdata+'_relative'][1],100)
+
                     resps = (fitness-16*ferms)/28 # 2day = 16*F
                     
                     norm = matplotlib.colors.Normalize(vmin=np.nanmin(merged_fitness[nullcline_fitness]),
@@ -278,8 +302,10 @@ def tradeoff_figure(xdata,ydata,merged_fitness,
     plt.tight_layout()
 
     if savefig:
-    
-        plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_{"pathway" if pathways else "mutation"}_colors{"_centroids" if centroids else ""}{"_annotatedInnovations" if annotate else ""}.pdf',bbox_inches='tight')
+        if relative:
+            plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_relative_{"pathway" if pathways else "mutation"}_colors{"_centroids" if centroids else ""}{"_annotatedInnovations" if annotate else ""}.pdf',bbox_inches='tight')
+        else:
+            plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_{"pathway" if pathways else "mutation"}_colors{"_centroids" if centroids else ""}{"_annotatedInnovations" if annotate else ""}.pdf',bbox_inches='tight')
 
     return fig
 
@@ -295,9 +321,13 @@ def tradeoff_figure_by_pathway(xdata,ydata,merged_fitness,
         savefig=False,
         gray_alpha=0.1,
         bold_alpha=0.5,
-        centroid_alpha=0.9
+        centroid_alpha=0.9,
+        relative=False,
         ):
 
+    # if relative:
+    #     xdata = xdata + '_relative'
+    #     ydata = ydata + '_relative'
     
     
 
@@ -384,6 +414,8 @@ def tradeoff_figure_by_pathway(xdata,ydata,merged_fitness,
                 if centroids:
                     # alpha = bold_alpha
 
+                    # if relative:
+
                     plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
                             color=colors,marker=tools.ploidy_marker_map[ploidy],s=15,label=f'{ancs[0]} {ploidy}')
                     
@@ -393,7 +425,7 @@ def tradeoff_figure_by_pathway(xdata,ydata,merged_fitness,
 
                         plt.scatter(gene_centroid[0],gene_centroid[1],
                                 color=colors[e_list[0]],edgecolors='k',linewidth=0.5,
-                                    marker=tools.ploidy_marker_map[ploidy],s=40,alpha=centroid_alpha)
+                                    marker=tools.ploidy_marker_map[ploidy],s=40,alpha=centroid_alpha,zorder=1000)
 
                 else:
                     plt.scatter(this_data[xdata+'_relative'].values,this_data[ydata+'_relative'].values,linewidths=0,
@@ -445,12 +477,19 @@ def tradeoff_figure_by_pathway(xdata,ydata,merged_fitness,
             #             plt.axvline(merged_fitness[merged_fitness['ancestor']==anc][xdata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
             #             plt.axhline(merged_fitness[merged_fitness['ancestor']==anc][ydata+'_ancestor'].values[0],color=tools.anc_color_map[anc],alpha=0.2,zorder=0)
 
-            plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
-            plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
+            
+
+            if relative:
+
+                plt.xlim(tools.lims[xdata+'_relative'][0],tools.lims[xdata+'_relative'][1])
+                plt.ylim(tools.lims[ydata+'_relative'][0],tools.lims[ydata+'_relative'][1])
+            else:
+                plt.xlim(tools.lims[xdata][0],tools.lims[xdata][1])
+                plt.ylim(tools.lims[ydata][0],tools.lims[ydata][1])
             
 
             # if len(ancs) >1:
-            if True:
+            if relative:
 
                 plt.xlabel(f'{tools.labels[xdata]} relative to parental strain')
                 plt.ylabel(f'{tools.labels[ydata]} relative to parental strain')
@@ -473,8 +512,16 @@ def tradeoff_figure_by_pathway(xdata,ydata,merged_fitness,
                 plt.axhline(0,color='gray',linestyle=':',zorder=0)
 
                 if (xdata == 'FerPerHour') & (ydata == 'ResPerHour'):
-                    for fitness in [1.0,1.5,2.0,2.5,3.0,3.5]:
+                    if relative:
+                        f_list = [1.0,1.5,2.0,2.5,3.0]
+                        ferms = np.linspace(tools.lims[xdata+'_relative'][0],tools.lims[xdata+'_relative'][1],100)
+                    else:
+                        f_list = [1.0,1.5,2.0,2.5,3.,3.50]
                         ferms = np.linspace(tools.lims[xdata][0],tools.lims[xdata][1],100)
+
+
+                    for fitness in f_list:
+                    
                         resps = (fitness-16*ferms)/28 # 2day = 16*F
                         
                         norm = matplotlib.colors.Normalize(vmin=np.nanmin(merged_fitness[nullcline_fitness]),
@@ -505,7 +552,9 @@ def tradeoff_figure_by_pathway(xdata,ydata,merged_fitness,
             plt.tight_layout()
 
             if savefig:
-            
-                plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_{"-".join(ancs)}_{pathway.replace("/","")}.pdf',bbox_inches='tight')
+                if relative:
+                    plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_relative_{"-".join(ancs)}_{pathway.replace("/","")}.pdf',bbox_inches='tight')
+                else:
+                    plt.savefig(f'{home_dir}/figures/analysis/tradeoffs/tradeoffs_{xdata}_{ydata}_{"-".join(ancs)}_{pathway.replace("/","")}.pdf',bbox_inches='tight')
 
     # return fig
