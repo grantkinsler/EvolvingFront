@@ -30,20 +30,20 @@ organizing_mutations_and_fitness.ipynb combines the fitness and mutation analysi
 
 Code for the majority of the data analysis is contained in the directory code/analysis.
 
-### 2D fitness vs stationary performance.ipynb
+1. 2D fitness vs stationary performance.ipynb
 Contains code to generate Figure 4 and analyses involving stationary phase performance.
 
-### Basic Properties of Isolated Mutants.ipynb
+2. Basic Properties of Isolated Mutants.ipynb
 Contains code to generate panels in Figure 2 that depict fitness effects of identified mutations.
 This also contains basic analyses and calculations of mutational properties.
 
-### calculating performances.ipynb
+3. calculating performances.ipynb
 Contains code to generate the performance calculation example in Figure 3A.
 
-### Evo1D_mutant_analysis.ipynb
+4. Evo1D_mutant_analysis.ipynb
 Contains code for generating Evo1D analysis figure S2. 
 
-### Exploring Tradeoffs Between Growth Phases.ipynb
+5. Exploring Tradeoffs Between Growth Phases.ipynb
 Contains code for generating the majority of the tradeoff figures, including Figures 3, 5, S3, S4, S5, S7, S8, S9, and S10. 
 
 
