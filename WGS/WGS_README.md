@@ -1,4 +1,4 @@
-The general procedure is laid out in the iPython notebook, but I’ll also describe it here:
+The general procedure is laid out in the Variant_Calling.ipynb iPython notebook, but I’ll also describe it here:
 (1) Process files using gatk
     1.1 Run yeast_alignment.sbatch. Align the samples to the reference genome with bwa and so some standard filtering (mark duplicates, read groups, etc.). Note: you need a yeast_alignment_samples.inp with all the sequencing files you want to process and to change the —array=1-X where X is the number of files you are processing
     1.2 Run yeast_mergeGVCFs+callgenotypes.sbatch. This merges all the files together and uses GATK to call genotypes on the full set.
