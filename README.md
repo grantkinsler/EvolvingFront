@@ -46,16 +46,20 @@ Evo1D_mutant_analysis.ipynb
 Exploring Tradeoffs Between Growth Phases.ipynb
 	Contains code for generating the majority of the tradeoff figures, including Figures 3, 5, S3, S4, S5, S7, S8, S9, and S10. 
 
-figures/
-	analysis/ 
-		Contains figures from various analysis, including panels used in main figures
-	main_text/
-		Contains figures in the paper and keynote file used to assemble panels.
+
+	figures/
+		analysis/ 
+			Contains figures from various analysis, including panels used in main figures
+		main_text/
+			Contains figures in the paper and keynote file used to assemble panels.
+
 
 data/ 
 	Contains data tables used in analysis as well as supplemental data files uploaded to the journal.
 
+
 EvolutionTracking/
+	
 	This directory contains code for processing of evolution tracking data, calculating DFEs, and comparing between fitness measurement experiments and evolution fitness.
 
 	processing/
