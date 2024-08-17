@@ -1,7 +1,7 @@
 This directory contains the code and data for Kinsler et al 2024:
 "A high-resolution two-step evolution experiment in yeast reveals a shift from pleiotropic to modular adaptation"
 
-INSTALLATION
+## INSTALLATION
 
 To run the scripts and notebooks contained here, it's best to use a virtual environment. 
 
@@ -9,7 +9,7 @@ You can install all the same packages/versions used here via:
 
 pip3 install -r venv_requirements.txt
 
-PROCESSING DATA
+## PROCESSING DATA
 
 All code used to process data is contained in the directory code/processing.
 
@@ -26,39 +26,39 @@ fitness_analysis.ipynb contains analysis of replicate-replicate correlations and
 
 organizing_mutations_and_fitness.ipynb combines the fitness and mutation analysis and calculates performances to generate the key data table (data/fitness_withMutations.csv) from which most of the analysis is derived.
 
-DATA ANALYSIS
+## DATA ANALYSIS
 
 Code for the majority of the data analysis is contained in the directory code/analysis.
 
-2D fitness vs stationary performance.ipynb
+### 2D fitness vs stationary performance.ipynb
 	Contains code to generate Figure 4 and analyses involving stationary phase performance.
 
-Basic Properties of Isolated Mutants.ipynb
+### Basic Properties of Isolated Mutants.ipynb
 	Contains code to generate panels in Figure 2 that depict fitness effects of identified mutations.
 	This also contains basic analyses and calculations of mutational properties.
 
-calculating performances.ipynb
+### calculating performances.ipynb
 	Contains code to generate the performance calculation example in Figure 3A.
 
-Evo1D_mutant_analysis.ipynb
+### Evo1D_mutant_analysis.ipynb
 	Contains code for generating Evo1D analysis figure S2. 
 
-Exploring Tradeoffs Between Growth Phases.ipynb
+### Exploring Tradeoffs Between Growth Phases.ipynb
 	Contains code for generating the majority of the tradeoff figures, including Figures 3, 5, S3, S4, S5, S7, S8, S9, and S10. 
 
 
-	figures/
-		analysis/ 
-			Contains figures from various analysis, including panels used in main figures
-		main_text/
-			Contains figures in the paper and keynote file used to assemble panels.
+### figures/
+	analysis/ 
+		Contains figures from various analysis, including panels used in main figures
+	main_text/
+		Contains figures in the paper and keynote file used to assemble panels.
 
 
-data/ 
+### data/ 
 	Contains data tables used in analysis as well as supplemental data files uploaded to the journal.
 
 
-EvolutionTracking/
+### EvolutionTracking/
 	
 	This directory contains code for processing of evolution tracking data, calculating DFEs, and comparing between fitness measurement experiments and evolution fitness.
 
